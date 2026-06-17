@@ -1,4 +1,4 @@
-import { callAgentJSON } from "../anthropic";
+import { callAgentJSON } from "../llm";
 import { ScannerOutput, type Job } from "../schemas";
 
 /** Agent 1 — Scanner : agrège les compétences demandées par le marché + leur fréquence. */

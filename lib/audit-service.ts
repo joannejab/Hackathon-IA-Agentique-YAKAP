@@ -45,7 +45,7 @@ export async function getAudit(
   }
 
   const course = getCourseById(courseId);
-  if (course && process.env.ANTHROPIC_API_KEY) {
+  if (course && process.env.LLM_API_KEY) {
     try {
       const audit = await runAudit(course, getJobs(), getTrends());
       memCache.set(courseId, audit);

@@ -3,6 +3,7 @@ import { runTechWatch } from "./agents/techWatch";
 import { runCourseMapper } from "./agents/courseMapper";
 import { runGapReporter } from "./agents/gapReporter";
 import { runFactChecker } from "./agents/factChecker";
+import { computeSkillFrequencies, lookupDemand } from "./market";
 import type {
   Course,
   Job,
@@ -30,11 +31,11 @@ function computeDrift(gaps: ReportedGap[]): number {
   return Math.min(100, Math.round(score / gaps.length));
 }
 
-/** Sévérité globale = la plus haute parmi les gaps. */
-function overallSeverity(gaps: ReportedGap[]): Severity {
-  let rank = 0;
-  for (const g of gaps) rank = Math.max(rank, SEVERITY_RANK[g.severity]);
-  return (["low", "medium", "high"] as const)[rank];
+/** Sévérité globale dérivée de la dérive (donne un dégradé lisible sur la heatmap). */
+function overallSeverity(drift: number): Severity {
+  if (drift < 18) return "low";
+  if (drift < 30) return "medium";
+  return "high";
 }
 
 /** Mini-tendance déterministe se terminant sur la dérive courante (pour la jauge). */
@@ -51,23 +52,29 @@ export async function runAudit(
   jobs: Job[],
   trends: Trend[],
 ): Promise<CourseAudit> {
+  // Fréquences marché calculées en dur (fiables) — partagées avec les agents 4 et 5.
+  const freqs = computeSkillFrequencies(jobs);
+
   const [scan, tech, mapped] = await Promise.all([
     runScanner(jobs),
     runTechWatch(course, trends),
     runCourseMapper(course),
   ]);
 
-  const report = await runGapReporter(course.title, scan, tech, mapped);
-  const facts = await runFactChecker(report, { course, jobs, trends });
+  const report = await runGapReporter(course.title, scan, tech, mapped, freqs);
+  const facts = await runFactChecker(report, { course, jobs, trends, marketFreq: freqs });
 
   // Fusionne chaque gap avec son verdict fact-check ; ne garde que ce qui est soutenu.
+  // Et OVERRIDE demandPct avec la valeur déterministe (anti-hallucination des %).
   const verifiedBySkill = new Map(facts.verifiedGaps.map((v) => [norm(v.skill), v]));
   const gaps: ReportedGap[] = [];
   for (const g of report.gaps) {
     const v = verifiedBySkill.get(norm(g.skill));
     if (v && !v.supported) continue; // retiré par le fact-check
+    const demand = lookupDemand(g.skill, freqs);
     gaps.push({
       ...g,
+      demandPct: demand ? demand.pct : g.demandPct,
       supported: v ? v.supported : true,
       sourceRef: v ? v.sourceRef : "non vérifié",
       confidence: v ? v.confidence : facts.overallConfidence,
@@ -83,7 +90,7 @@ export async function runAudit(
     major: course.major,
     generatedAt: new Date().toISOString(),
     driftPct: drift,
-    severity: overallSeverity(gaps),
+    severity: overallSeverity(drift),
     overallConfidence: facts.overallConfidence,
     marketSkills: scan.skills,
     trends: tech.trends,

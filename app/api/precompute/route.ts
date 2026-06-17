@@ -10,9 +10,9 @@ import type { CourseAudit } from "@/lib/schemas";
  * À exécuter une fois avant la démo (clé API requise) → audits instantanés ensuite.
  */
 export async function GET() {
-  if (!process.env.ANTHROPIC_API_KEY) {
+  if (!process.env.LLM_API_KEY) {
     return Response.json(
-      { error: "ANTHROPIC_API_KEY manquante — impossible de pré-calculer." },
+      { error: "LLM_API_KEY manquante — impossible de pré-calculer." },
       { status: 400 },
     );
   }

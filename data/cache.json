@@ -1,0 +1,901 @@
+{
+  "generatedAt": "2026-06-17T13:49:33.324Z",
+  "audits": {
+    "ml-scia": {
+      "courseId": "ml-scia",
+      "courseTitle": "Machine Learning",
+      "major": "SCIA",
+      "generatedAt": "2026-06-17T13:48:01.779Z",
+      "driftPct": 33,
+      "severity": "high",
+      "overallConfidence": 0.95,
+      "marketSkills": [
+        {
+          "name": "Python",
+          "frequencyPct": 100,
+          "importance": "high"
+        },
+        {
+          "name": "RAG",
+          "frequencyPct": 58,
+          "importance": "high"
+        },
+        {
+          "name": "Vector databases",
+          "frequencyPct": 54,
+          "importance": "high"
+        },
+        {
+          "name": "LLM agents",
+          "frequencyPct": 50,
+          "importance": "high"
+        },
+        {
+          "name": "MLOps",
+          "frequencyPct": 42,
+          "importance": "high"
+        },
+        {
+          "name": "PyTorch",
+          "frequencyPct": 33,
+          "importance": "medium"
+        },
+        {
+          "name": "scikit-learn",
+          "frequencyPct": 29,
+          "importance": "medium"
+        },
+        {
+          "name": "SQL",
+          "frequencyPct": 29,
+          "importance": "medium"
+        },
+        {
+          "name": "Fine-tuning",
+          "frequencyPct": 25,
+          "importance": "medium"
+        },
+        {
+          "name": "Prompt engineering",
+          "frequencyPct": 21,
+          "importance": "medium"
+        },
+        {
+          "name": "Docker",
+          "frequencyPct": 17,
+          "importance": "low"
+        },
+        {
+          "name": "Kubernetes",
+          "frequencyPct": 12,
+          "importance": "low"
+        }
+      ],
+      "trends": [
+        {
+          "name": "MLOps & CI/CD de modèles",
+          "why": "Elle complète directement le module introductif sur le déploiement en industrialisant la mise en production, le monitoring et la gestion du cycle de vie des modèles classiques.",
+          "maturity": "mainstream"
+        },
+        {
+          "name": "Observabilité ML (drift, data quality)",
+          "why": "Elle est indispensable pour assurer la robustesse des modèles en production, répondant aux enjeux de maintenance et de fiabilité liés aux métriques d'évaluation vues en cours.",
+          "maturity": "mainstream"
+        },
+        {
+          "name": "Fine-tuning efficace (LoRA, PEFT)",
+          "why": "Elle introduit une méthode moderne d'adaptation de modèles qui enrichit la compréhension du processus d'apprentissage et de l'ingénierie des features au-delà des algorithmes tabulaires traditionnels.",
+          "maturity": "growing"
+        }
+      ],
+      "covered": [
+        {
+          "topic": "Linear and Logistic Regression",
+          "depth": "advanced"
+        },
+        {
+          "topic": "Decision Trees and Ensemble Methods",
+          "depth": "advanced"
+        },
+        {
+          "topic": "Cross-Validation and Evaluation Metrics",
+          "depth": "intermediate"
+        },
+        {
+          "topic": "Feature Engineering and Selection",
+          "depth": "intermediate"
+        },
+        {
+          "topic": "Dimensionality Reduction",
+          "depth": "intermediate"
+        },
+        {
+          "topic": "Model Deployment",
+          "depth": "intro"
+        }
+      ],
+      "gaps": [
+        {
+          "skill": "MLOps",
+          "evidence": "Le cours ne couvre que le déploiement en intro, alors que MLOps (CI/CD, monitoring, drift) est demandé à 38% du marché et constitue une avancée tech incontournable pour l'industrialisation.",
+          "demandPct": 38,
+          "severity": "high",
+          "supported": true,
+          "sourceRef": "syllabus: 'Introduction au déploiement de modèles' (intro) vs marché: 38% (MLOps, CI/CD, monitoring) ; trend T-03, T-09",
+          "confidence": 0.95
+        },
+        {
+          "skill": "RAG",
+          "evidence": "Absence totale de RAG (Retrieval-Augmented Generation) alors que cette compétence est demandée à 42% du marché et représente une avancée majeure en IA générative.",
+          "demandPct": 42,
+          "severity": "high",
+          "supported": true,
+          "sourceRef": "syllabus: RAG absent ; marché: 42% (RAG, Vector databases) ; trend T-01, T-04",
+          "confidence": 0.98
+        },
+        {
+          "skill": "Fine-tuning",
+          "evidence": "Le cours se limite aux algorithmes tabulaires traditionnels sans aborder le fine-tuning (LoRA/PEFT), pourtant demandé à 25% du marché pour l'adaptation des modèles.",
+          "demandPct": 25,
+          "severity": "medium",
+          "supported": true,
+          "sourceRef": "syllabus: absent (seulement ML tabulaire) ; marché: 25% (Fine-tuning, LoRA/PEFT) ; trend T-05",
+          "confidence": 0.9
+        }
+      ],
+      "suggestedModules": [
+        {
+          "title": "MLOps & Model Lifecycle Management",
+          "objectives": [
+            "Implémenter des pipelines CI/CD pour le déploiement automatisé des modèles.",
+            "Mettre en place des systèmes de monitoring pour détecter le drift conceptuel et de données.",
+            "Gérer le cycle de vie des modèles de l'expérimentation à la production."
+          ],
+          "rationale": "Comble le gap critique entre le déploiement introductif et les exigences industrielles (38% de demande), en alignant le cours avec les avancées tech en MLOps.",
+          "hours": 12
+        },
+        {
+          "title": "Advanced LLM Applications: RAG & Vector Search",
+          "objectives": [
+            "Concevoir des architectures RAG pour enrichir les LLM avec des données externes.",
+            "Utiliser des bases de données vectorielles pour l'indexation et la récupération sémantique.",
+            "Évaluer la pertinence et la précision des réponses générées par le système RAG."
+          ],
+          "rationale": "Répond à la forte demande marché (42%) pour les applications LLM modernes, offrant une évolution naturelle et pertinente par rapport au ML classique.",
+          "hours": 10
+        },
+        {
+          "title": "Efficient Fine-tuning Techniques",
+          "objectives": [
+            "Comprendre les principes du Fine-tuning et de l'adaptation de modèles.",
+            "Appliquer des techniques d'optimisation comme LoRA et PEFT pour réduire les coûts.",
+            "Adapter un modèle pré-entraîné à une tâche spécifique avec un jeu de données limité."
+          ],
+          "rationale": "Introduit une méthode moderne (25% de demande) pour l'adaptation des modèles, complétant la compréhension du processus d'apprentissage au-delà des algorithmes tabulaires.",
+          "hours": 8
+        }
+      ],
+      "flagged": []
+    },
+    "dl-scia": {
+      "courseId": "dl-scia",
+      "courseTitle": "Deep Learning",
+      "major": "SCIA",
+      "generatedAt": "2026-06-17T13:48:22.902Z",
+      "driftPct": 35,
+      "severity": "high",
+      "overallConfidence": 1,
+      "marketSkills": [
+        {
+          "name": "Python",
+          "frequencyPct": 100,
+          "importance": "high"
+        },
+        {
+          "name": "RAG",
+          "frequencyPct": 54,
+          "importance": "high"
+        },
+        {
+          "name": "Vector databases",
+          "frequencyPct": 50,
+          "importance": "high"
+        },
+        {
+          "name": "LLM agents",
+          "frequencyPct": 46,
+          "importance": "high"
+        },
+        {
+          "name": "MLOps",
+          "frequencyPct": 38,
+          "importance": "high"
+        },
+        {
+          "name": "PyTorch",
+          "frequencyPct": 25,
+          "importance": "medium"
+        },
+        {
+          "name": "SQL",
+          "frequencyPct": 25,
+          "importance": "medium"
+        },
+        {
+          "name": "scikit-learn",
+          "frequencyPct": 21,
+          "importance": "medium"
+        },
+        {
+          "name": "Fine-tuning",
+          "frequencyPct": 21,
+          "importance": "medium"
+        },
+        {
+          "name": "Prompt engineering",
+          "frequencyPct": 17,
+          "importance": "medium"
+        },
+        {
+          "name": "Docker",
+          "frequencyPct": 17,
+          "importance": "low"
+        },
+        {
+          "name": "Kubernetes",
+          "frequencyPct": 13,
+          "importance": "low"
+        }
+      ],
+      "trends": [
+        {
+          "name": "Fine-tuning efficace (LoRA, PEFT)",
+          "why": "Essentiel pour adapter les architectures Transformer (intro dans le syllabus) aux tâches spécifiques sans coût de calcul prohibitif, complétant la théorie par la pratique moderne.",
+          "maturity": "growing"
+        },
+        {
+          "name": "Multimodalité (vision-langage)",
+          "why": "Évolution naturelle et incontournable des CNN pour la vision, permettant de traiter l'information visuelle via des architectures unifiées basées sur l'attention.",
+          "maturity": "growing"
+        },
+        {
+          "name": "Retrieval-Augmented Generation (RAG)",
+          "why": "Applique les concepts d'embeddings et de similarité (liés aux réseaux de neurones) pour enrichir les sorties des modèles génératifs, une compétence clé actuelle.",
+          "maturity": "growing"
+        },
+        {
+          "name": "MLOps & CI/CD de modèles",
+          "why": "Indispensable pour industrialiser les pipelines de Deep Learning, assurant la reproductibilité et le déploiement fiable des modèles complexes enseignés.",
+          "maturity": "mainstream"
+        }
+      ],
+      "covered": [
+        {
+          "topic": "Réseaux de neurones & rétropropagation",
+          "depth": "advanced"
+        },
+        {
+          "topic": "CNN pour la vision",
+          "depth": "advanced"
+        },
+        {
+          "topic": "RNN & LSTM",
+          "depth": "intermediate"
+        },
+        {
+          "topic": "Régularisation & optimisation",
+          "depth": "intermediate"
+        },
+        {
+          "topic": "Transformers",
+          "depth": "intro"
+        }
+      ],
+      "gaps": [
+        {
+          "skill": "RAG",
+          "evidence": "Non couvert alors que demandé sur le marché (42%) et avancée tech incontournable pour enrichir les sorties des modèles génératifs.",
+          "demandPct": 42,
+          "severity": "high",
+          "supported": true,
+          "sourceRef": "syllabus: RAG absent ; marché: 42% (T-01, J-02, J-05)",
+          "confidence": 1
+        },
+        {
+          "skill": "Fine-tuning",
+          "evidence": "Non couvert alors que demandé sur le marché (25%) et essentiel pour adapter les architectures Transformer aux tâches spécifiques sans coût prohibitif.",
+          "demandPct": 25,
+          "severity": "high",
+          "supported": true,
+          "sourceRef": "syllabus: Transformers intro only (pas de fine-tuning) ; marché: 25% (T-05, J-02, J-06)",
+          "confidence": 0.9
+        },
+        {
+          "skill": "MLOps",
+          "evidence": "Non couvert alors que demandé sur le marché (38%) et indispensable pour industrialiser les pipelines de Deep Learning et assurer le déploiement fiable.",
+          "demandPct": 38,
+          "severity": "high",
+          "supported": true,
+          "sourceRef": "syllabus: MLOps absent ; marché: 38% (T-03, J-01, J-04)",
+          "confidence": 1
+        }
+      ],
+      "suggestedModules": [
+        {
+          "title": "RAG et Vector Databases",
+          "objectives": [
+            "Comprendre l'architecture Retrieval-Augmented Generation et son rôle dans la réduction des hallucinations.",
+            "Implémenter un pipeline de récupération sémantique utilisant des embeddings et des bases vectorielles.",
+            "Intégrer la récupération de contexte dans les flux de génération de texte."
+          ],
+          "rationale": "Le RAG est une compétence clé actuelle (42% de demande) qui applique directement les concepts d'embeddings vus en Deep Learning pour améliorer les performances des modèles génératifs.",
+          "hours": 12
+        },
+        {
+          "title": "Fine-tuning et Adaptation de Modèles",
+          "objectives": [
+            "Maîtriser les techniques d'adaptation légère comme LoRA et PEFT pour les architectures Transformer.",
+            "Préparer et structurer les jeux de données pour l'entraînement supervisé ou semi-supervisé.",
+            "Évaluer l'impact du fine-tuning sur les performances spécifiques sans surcoût de calcul majeur."
+          ],
+          "rationale": "Le fine-tuning (25% de demande) est l'évolution naturelle du cours sur les Transformers, permettant aux étudiants de passer de la théorie à l'adaptation pratique des modèles.",
+          "hours": 10
+        },
+        {
+          "title": "MLOps pour le Deep Learning",
+          "objectives": [
+            "Structurer un pipeline de données et d'entraînement reproductible.",
+            "Mettre en place des outils de versioning de modèles et de données.",
+            "Déployer un modèle de Deep Learning dans un environnement de production contrôlé."
+          ],
+          "rationale": "Le MLOps (38% de demande) est indispensable pour industrialiser les pipelines enseignés, assurant la reproductibilité et le déploiement fiable des modèles complexes.",
+          "hours": 10
+        }
+      ],
+      "flagged": []
+    },
+    "nlp-scia": {
+      "courseId": "nlp-scia",
+      "courseTitle": "Natural Language Processing",
+      "major": "SCIA",
+      "generatedAt": "2026-06-17T13:48:47.616Z",
+      "driftPct": 29,
+      "severity": "medium",
+      "overallConfidence": 0.98,
+      "marketSkills": [
+        {
+          "name": "Python",
+          "frequencyPct": 100,
+          "importance": "high"
+        },
+        {
+          "name": "RAG",
+          "frequencyPct": 54,
+          "importance": "high"
+        },
+        {
+          "name": "Vector databases",
+          "frequencyPct": 50,
+          "importance": "high"
+        },
+        {
+          "name": "LLM agents",
+          "frequencyPct": 46,
+          "importance": "high"
+        },
+        {
+          "name": "MLOps",
+          "frequencyPct": 38,
+          "importance": "high"
+        },
+        {
+          "name": "PyTorch",
+          "frequencyPct": 25,
+          "importance": "medium"
+        },
+        {
+          "name": "SQL",
+          "frequencyPct": 25,
+          "importance": "medium"
+        },
+        {
+          "name": "scikit-learn",
+          "frequencyPct": 21,
+          "importance": "medium"
+        },
+        {
+          "name": "Fine-tuning",
+          "frequencyPct": 21,
+          "importance": "medium"
+        },
+        {
+          "name": "Prompt engineering",
+          "frequencyPct": 17,
+          "importance": "medium"
+        },
+        {
+          "name": "Deep Learning",
+          "frequencyPct": 17,
+          "importance": "medium"
+        },
+        {
+          "name": "NLP",
+          "frequencyPct": 17,
+          "importance": "medium"
+        }
+      ],
+      "trends": [
+        {
+          "name": "Retrieval-Augmented Generation (RAG)",
+          "why": "Évolution naturelle du transfer learning introductif vers des systèmes NLP robustes et contextualisés, rendant indispensable la maîtrise de l'architecture LLM+RAG.",
+          "maturity": "growing"
+        },
+        {
+          "name": "Fine-tuning efficace (LoRA, PEFT)",
+          "why": "Technique incontournable pour adapter les modèles de base (étudiés en intro) à des tâches spécifiques, complétant directement le module sur BERT et le transfer learning.",
+          "maturity": "growing"
+        },
+        {
+          "name": "Embeddings & recherche sémantique",
+          "why": "Modernisation directe du module Word embeddings, passant des représentations statiques (Word2Vec) aux embeddings contextuels denses pour la recherche d'information.",
+          "maturity": "mainstream"
+        },
+        {
+          "name": "Prompt engineering & évaluation",
+          "why": "Nouveau paradigme d'interaction avec les modèles NLP, essentiel pour exploiter les capacités des architectures séquence-à-séquence modernes sans fine-tuning lourd.",
+          "maturity": "mainstream"
+        },
+        {
+          "name": "Bases de données vectorielles",
+          "why": "Infrastructure critique pour implémenter la recherche sémantique et le RAG, reliant directement les concepts d'embeddings aux applications NLP de production.",
+          "maturity": "growing"
+        }
+      ],
+      "covered": [
+        {
+          "topic": "Preprocessing & Tokenization",
+          "depth": "advanced"
+        },
+        {
+          "topic": "Word Embeddings",
+          "depth": "advanced"
+        },
+        {
+          "topic": "Text Classification",
+          "depth": "intermediate"
+        },
+        {
+          "topic": "Sequence-to-Sequence Models",
+          "depth": "intermediate"
+        },
+        {
+          "topic": "BERT & Transfer Learning",
+          "depth": "intro"
+        }
+      ],
+      "gaps": [
+        {
+          "skill": "RAG",
+          "evidence": "Non couvert alors que demandé sur le marché (42%) et avancée tech incontournable pour les systèmes NLP contextualisés.",
+          "demandPct": 42,
+          "severity": "high",
+          "supported": true,
+          "sourceRef": "syllabus: absent ; marché: 42% ; offres: J-02, J-05, J-06, J-09, J-12, J-15, J-17, J-19, J-21, J-24 ; trend: T-01",
+          "confidence": 1
+        },
+        {
+          "skill": "Vector databases",
+          "evidence": "Absence de couverture des bases de données vectorielles, infrastructure critique pour la recherche sémantique et le RAG.",
+          "demandPct": 42,
+          "severity": "high",
+          "supported": true,
+          "sourceRef": "syllabus: absent ; marché: 42% ; offres: J-02, J-05, J-08, J-09, J-12, J-16, J-17, J-20, J-21, J-24 ; trend: T-04",
+          "confidence": 1
+        },
+        {
+          "skill": "Fine-tuning",
+          "evidence": "Le cours ne couvre que l'intro au transfer learning (BERT), manquant les techniques efficaces de fine-tuning (LoRA, PEFT) essentielles pour l'adaptation des modèles.",
+          "demandPct": 25,
+          "severity": "medium",
+          "supported": true,
+          "sourceRef": "syllabus: BERT intro only (no LoRA/PEFT) ; marché: 25% ; offres: J-02, J-06, J-09, J-12, J-15, J-24 ; trend: T-05",
+          "confidence": 0.9
+        },
+        {
+          "skill": "Prompt engineering",
+          "evidence": "Le paradigme d'interaction avec les LLMs via le prompt engineering n'est pas abordé, bien que demandé (17%) pour exploiter les modèles sans fine-tuning lourd.",
+          "demandPct": 17,
+          "severity": "medium",
+          "supported": true,
+          "sourceRef": "syllabus: absent ; marché: 17% ; offres: J-05, J-09, J-12, J-21 ; trend: T-06",
+          "confidence": 0.95
+        }
+      ],
+      "suggestedModules": [
+        {
+          "title": "RAG & Vector Search Architecture",
+          "objectives": [
+            "Comprendre l'architecture Retrieval-Augmented Generation et son rôle dans la réduction des hallucinations.",
+            "Implémenter le pipeline de recherche sémantique avec des embeddings contextuels et des bases de données vectorielles.",
+            "Intégrer la récupération de contexte externe dans les flux de génération de texte."
+          ],
+          "rationale": "Le RAG (42%) et les bases vectorielles (42%) sont les compétences les plus demandées et manquantes, représentant l'évolution naturelle des embeddings statiques vers des systèmes NLP de production robustes.",
+          "hours": 12
+        },
+        {
+          "title": "Advanced Model Adaptation: Fine-tuning & PEFT",
+          "objectives": [
+            "Maîtriser les techniques d'adaptation légère des modèles (LoRA, QLoRA) pour réduire les coûts de calcul.",
+            "Préparer et structurer les jeux de données pour le fine-tuning de modèles de base (ex: BERT, LLMs).",
+            "Évaluer les performances des modèles adaptés sur des tâches spécifiques vs les approches zero-shot."
+          ],
+          "rationale": "Le fine-tuning (25%) est une exigence marché clé pour personnaliser les modèles introductifs, complétant directement le module BERT existant.",
+          "hours": 8
+        },
+        {
+          "title": "LLM Interaction: Prompt Engineering & Evaluation",
+          "objectives": [
+            "Concevoir des prompts structurés (Chain-of-Thought, Few-Shot) pour optimiser les sorties des modèles.",
+            "Mettre en place des métriques d'évaluation automatisées pour la qualité des réponses LLM.",
+            "Distinguer les cas d'usage appropriés pour le prompt engineering vs le fine-tuning."
+          ],
+          "rationale": "Le prompt engineering (17%) est un paradigme d'interaction essentiel et mainstream, offrant une alternative rapide au fine-tuning pour l'exploitation des capacités NLP modernes.",
+          "hours": 6
+        }
+      ],
+      "flagged": []
+    },
+    "data-eng-scia": {
+      "courseId": "data-eng-scia",
+      "courseTitle": "Data Engineering",
+      "major": "SCIA",
+      "generatedAt": "2026-06-17T13:49:11.147Z",
+      "driftPct": 33,
+      "severity": "high",
+      "overallConfidence": 1,
+      "marketSkills": [
+        {
+          "name": "Python",
+          "frequencyPct": 100,
+          "importance": "high"
+        },
+        {
+          "name": "RAG",
+          "frequencyPct": 54,
+          "importance": "high"
+        },
+        {
+          "name": "Vector databases",
+          "frequencyPct": 50,
+          "importance": "high"
+        },
+        {
+          "name": "LLM agents",
+          "frequencyPct": 46,
+          "importance": "high"
+        },
+        {
+          "name": "MLOps",
+          "frequencyPct": 38,
+          "importance": "high"
+        },
+        {
+          "name": "PyTorch",
+          "frequencyPct": 25,
+          "importance": "medium"
+        },
+        {
+          "name": "scikit-learn",
+          "frequencyPct": 25,
+          "importance": "medium"
+        },
+        {
+          "name": "SQL",
+          "frequencyPct": 25,
+          "importance": "medium"
+        },
+        {
+          "name": "Fine-tuning",
+          "frequencyPct": 25,
+          "importance": "medium"
+        },
+        {
+          "name": "Prompt engineering",
+          "frequencyPct": 21,
+          "importance": "medium"
+        },
+        {
+          "name": "NLP",
+          "frequencyPct": 17,
+          "importance": "medium"
+        },
+        {
+          "name": "Deep Learning",
+          "frequencyPct": 17,
+          "importance": "medium"
+        }
+      ],
+      "trends": [
+        {
+          "name": "Bases de données vectorielles",
+          "why": "Elles constituent l'infrastructure de stockage indispensable pour gérer les embeddings, complétant directement le module introductif et préparant l'ingénierie des données pour le RAG.",
+          "maturity": "growing"
+        },
+        {
+          "name": "Retrieval-Augmented Generation (RAG)",
+          "why": "C'est le cas d'usage majeur qui transforme le Data Engineering en créant des pipelines complexes de récupération et de pré-traitement de documents pour alimenter les LLM.",
+          "maturity": "growing"
+        },
+        {
+          "name": "Observabilité ML (drift, data quality)",
+          "why": "Elle étend les concepts de qualité des données et de monitoring au-delà du simple ETL, devenant critique pour garantir la fiabilité des flux de données alimentant les modèles IA.",
+          "maturity": "mainstream"
+        },
+        {
+          "name": "Embeddings & recherche sémantique",
+          "why": "Ces techniques nécessitent des pipelines de transformation de données spécifiques (nettoyage, vectorisation) qui enrichissent les compétences classiques de manipulation de données massives.",
+          "maturity": "mainstream"
+        }
+      ],
+      "covered": [
+        {
+          "topic": "SQL & Modélisation de données",
+          "depth": "advanced"
+        },
+        {
+          "topic": "Pipelines ETL / ELT",
+          "depth": "advanced"
+        },
+        {
+          "topic": "Apache Spark",
+          "depth": "intermediate"
+        },
+        {
+          "topic": "Orchestration (Apache Airflow)",
+          "depth": "intermediate"
+        },
+        {
+          "topic": "Data Warehousing",
+          "depth": "intermediate"
+        },
+        {
+          "topic": "Bases vectorielles",
+          "depth": "intro"
+        }
+      ],
+      "gaps": [
+        {
+          "skill": "RAG",
+          "evidence": "Non couvert alors que demandé sur le marché (42%) ; le cours ne traite pas des pipelines de récupération et de pré-traitement de documents pour alimenter les LLM.",
+          "demandPct": 42,
+          "severity": "high",
+          "supported": true,
+          "sourceRef": "syllabus: RAG absent ; marché: 42% (T-01, J-02, J-05, J-06, J-09, J-12, J-15, J-17, J-19, J-21, J-24)",
+          "confidence": 1
+        },
+        {
+          "skill": "MLOps",
+          "evidence": "Non couvert alors que demandé sur le marché (38%) ; le cours se limite à l'orchestration ETL sans aborder l'observabilité ML, le drift ou la qualité des données pour les modèles IA.",
+          "demandPct": 38,
+          "severity": "high",
+          "supported": true,
+          "sourceRef": "syllabus: MLOps absent (seulement Airflow/ETL) ; marché: 38% (T-03, T-09, J-01, J-04, J-07, J-08, J-11, J-14, J-18, J-20, J-23)",
+          "confidence": 1
+        },
+        {
+          "skill": "LLM agents",
+          "evidence": "Non couvert alors que demandé sur le marché (29%) ; absence de formation sur les architectures d'agents et les workflows complexes liés aux LLM.",
+          "demandPct": 29,
+          "severity": "medium",
+          "supported": true,
+          "sourceRef": "syllabus: LLM agents absent ; marché: 29% (T-02, J-02, J-05, J-09, J-12, J-17, J-21, J-24)",
+          "confidence": 1
+        },
+        {
+          "skill": "Vector databases",
+          "evidence": "Seulement abordé en niveau introductif alors que la demande est forte (42%) ; manque de profondeur sur les pipelines de transformation spécifiques aux embeddings.",
+          "demandPct": 42,
+          "severity": "medium",
+          "supported": true,
+          "sourceRef": "syllabus: Bases vectorielles (depth: intro) ; marché: 42% (T-04, J-02, J-05, J-08, J-09, J-12, J-16, J-17, J-20, J-21, J-24)",
+          "confidence": 0.9
+        }
+      ],
+      "suggestedModules": [
+        {
+          "title": "Data Engineering for RAG & LLMs",
+          "objectives": [
+            "Concevoir des pipelines ETL/ELT spécifiques pour le nettoyage et la vectorisation de documents non structurés.",
+            "Implémenter des stratégies de chunking et de métadonnées optimisées pour la recherche sémantique.",
+            "Intégrer des bases de données vectorielles dans des architectures de récupération (RAG) scalables."
+          ],
+          "rationale": "Le RAG est le cas d'usage majeur transformant le Data Engineering actuel (42% de demande). Ce module comble le fossé entre les pipelines classiques et les besoins spécifiques des LLM.",
+          "hours": 12
+        },
+        {
+          "title": "MLOps & Data Observability",
+          "objectives": [
+            "Mettre en place des systèmes de monitoring pour détecter le drift de données et de modèles en production.",
+            "Intégrer des tests de qualité des données automatisés dans les pipelines de données.",
+            "Orchestrer le déploiement et la maintenance des modèles IA avec des outils de CI/CD adaptés au ML."
+          ],
+          "rationale": "L'observabilité ML est devenue critique pour la fiabilité des flux de données (38% de demande). Ce module étend les compétences d'orchestration existantes vers la production IA.",
+          "hours": 10
+        }
+      ],
+      "flagged": []
+    },
+    "stats-scia": {
+      "courseId": "stats-scia",
+      "courseTitle": "Statistics & Probability",
+      "major": "SCIA",
+      "generatedAt": "2026-06-17T13:49:33.324Z",
+      "driftPct": 30,
+      "severity": "high",
+      "overallConfidence": 0.95,
+      "marketSkills": [
+        {
+          "name": "Python",
+          "frequencyPct": 100,
+          "importance": "high"
+        },
+        {
+          "name": "RAG",
+          "frequencyPct": 54,
+          "importance": "high"
+        },
+        {
+          "name": "Vector databases",
+          "frequencyPct": 50,
+          "importance": "high"
+        },
+        {
+          "name": "LLM agents",
+          "frequencyPct": 46,
+          "importance": "high"
+        },
+        {
+          "name": "MLOps",
+          "frequencyPct": 38,
+          "importance": "high"
+        },
+        {
+          "name": "PyTorch",
+          "frequencyPct": 25,
+          "importance": "medium"
+        },
+        {
+          "name": "scikit-learn",
+          "frequencyPct": 25,
+          "importance": "medium"
+        },
+        {
+          "name": "SQL",
+          "frequencyPct": 25,
+          "importance": "medium"
+        },
+        {
+          "name": "Fine-tuning",
+          "frequencyPct": 25,
+          "importance": "medium"
+        },
+        {
+          "name": "Prompt engineering",
+          "frequencyPct": 21,
+          "importance": "medium"
+        },
+        {
+          "name": "Deep Learning",
+          "frequencyPct": 17,
+          "importance": "medium"
+        },
+        {
+          "name": "NLP",
+          "frequencyPct": 17,
+          "importance": "medium"
+        }
+      ],
+      "trends": [
+        {
+          "name": "MLOps & CI/CD de modèles",
+          "why": "Indispensable pour garantir la robustesse statistique et la reproductibilité des modèles de régression et d'inférence en production, au-delà de la simple théorie.",
+          "maturity": "mainstream"
+        },
+        {
+          "name": "Observabilité ML (drift, data quality)",
+          "why": "Crucial pour valider les hypothèses statistiques et détecter les violations des distributions sous-jacentes (drift) qui faussent les tests d'hypothèses et l'inférence bayésienne.",
+          "maturity": "mainstream"
+        },
+        {
+          "name": "Embeddings & recherche sémantique",
+          "why": "Fournit des représentations vectorielles modernes pour l'analyse de similarité et le clustering, enrichissant les méthodes classiques d'inférence et de régression non linéaire.",
+          "maturity": "mainstream"
+        }
+      ],
+      "covered": [
+        {
+          "topic": "Probabilities and Random Variables",
+          "depth": "advanced"
+        },
+        {
+          "topic": "Hypothesis Testing",
+          "depth": "advanced"
+        },
+        {
+          "topic": "Statistical Regression",
+          "depth": "advanced"
+        },
+        {
+          "topic": "Bayesian Inference",
+          "depth": "intermediate"
+        },
+        {
+          "topic": "Time Series Analysis",
+          "depth": "intermediate"
+        }
+      ],
+      "gaps": [
+        {
+          "skill": "MLOps",
+          "evidence": "Non couvert alors que demandé sur le marché (38%) pour garantir la robustesse statistique et la reproductibilité des modèles en production.",
+          "demandPct": 38,
+          "severity": "high",
+          "supported": true,
+          "sourceRef": "syllabus: absent ; marché: 38% (T-03, J-01, J-04, J-07, J-08, J-11, J-14, J-18, J-20, J-23)",
+          "confidence": 0.95
+        },
+        {
+          "skill": "Embeddings & recherche sémantique",
+          "evidence": "Non couvert alors que fournissant des représentations vectorielles modernes enrichissant les méthodes classiques d'inférence et de clustering.",
+          "demandPct": 42,
+          "severity": "high",
+          "supported": true,
+          "sourceRef": "syllabus: absent ; marché: 42% (T-04, T-11, J-02, J-05, J-08, J-09, J-12, J-16, J-17, J-20, J-21, J-24)",
+          "confidence": 0.95
+        },
+        {
+          "skill": "Observabilité ML (drift, data quality)",
+          "evidence": "Non couvert alors que crucial pour valider les hypothèses statistiques et détecter les violations des distributions sous-jacentes (drift).",
+          "demandPct": 13,
+          "severity": "medium",
+          "supported": true,
+          "sourceRef": "syllabus: absent ; marché: 13% (T-09, J-04, J-14, J-20)",
+          "confidence": 0.9
+        }
+      ],
+      "suggestedModules": [
+        {
+          "title": "Statistical MLOps & Model Governance",
+          "objectives": [
+            "Intégrer les principes statistiques dans les pipelines CI/CD pour assurer la reproductibilité des expériences.",
+            "Mettre en place des tests statistiques automatisés pour valider la stabilité des distributions d'entrée.",
+            "Gérer le cycle de vie des modèles en alignant les métriques de performance avec les indicateurs de qualité statistique."
+          ],
+          "rationale": "Le marché exige (38%) une robustesse opérationnelle des modèles statistiques, au-delà de la théorie pure, pour garantir la fiabilité en production.",
+          "hours": 12
+        },
+        {
+          "title": "Statistical Observability & Drift Detection",
+          "objectives": [
+            "Détecter les dérives de données (data drift) et conceptuelles en utilisant des tests d'hypothèses et des mesures de divergence.",
+            "Surveiller la qualité des données en temps réel pour prévenir la violation des hypothèses de base des modèles.",
+            "Implémenter des alertes statistiques pour déclencher des re-calibrations ou des re-entraînements automatiques."
+          ],
+          "rationale": "L'observabilité est cruciale pour valider les hypothèses statistiques et détecter les violations de distributions qui faussent l'inférence.",
+          "hours": 10
+        },
+        {
+          "title": "Vector Statistics & Semantic Embeddings",
+          "objectives": [
+            "Appliquer des méthodes statistiques multivariées sur des espaces vectoriels de haute dimension.",
+            "Utiliser les embeddings pour l'analyse de similarité, le clustering et la réduction de dimension non linéaire.",
+            "Évaluer la qualité sémantique des représentations vectorielles via des métriques statistiques de distance et de densité."
+          ],
+          "rationale": "Les embeddings (42%) enrichissent les méthodes classiques d'inférence et offrent de nouvelles perspectives pour l'analyse de similarité.",
+          "hours": 10
+        }
+      ],
+      "flagged": []
+    }
+  }
+}

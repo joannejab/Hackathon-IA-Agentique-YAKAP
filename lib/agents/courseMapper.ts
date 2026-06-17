@@ -1,4 +1,4 @@
-import { callAgentJSON } from "../anthropic";
+import { callAgentJSON } from "../llm";
 import { CourseMapperOutput, type Course } from "../schemas";
 
 /** Agent 3 — Course-Mapper : extrait ce que le cours couvre réellement, avec le niveau de profondeur. */

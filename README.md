@@ -11,8 +11,10 @@ Hackathon IA Agentique (GDG + Alumni) x EPITA — 17 juin 2026.
 
 ```bash
 npm install
-cp .env.example .env.local   # renseigner ANTHROPIC_API_KEY
+cp .env.example .env.local   # renseigner LLM_API_KEY (endpoint vLLM fourni)
 npm run dev                   # http://localhost:3000
+# pré-calcul des audits réels (une fois, génère data/cache.json) :
+curl http://localhost:3000/api/precompute
 ```
 
 Build / typecheck :
@@ -24,8 +26,10 @@ npx tsc --noEmit
 
 ## Stack
 
-Next.js 16 (App Router) + React 19 + Tailwind v4 · `@anthropic-ai/sdk` (modèle `claude-opus-4-8`) · `zod`.
+Next.js 16 (App Router) + React 19 + Tailwind v4 · `openai` SDK (API OpenAI-compatible) · `zod`.
+LLM : **qwen3.6-35b-a3b** servi sous vLLM (endpoint auto-hébergé fourni par l'enseignant), thinking désactivé.
 Tout en full-stack Next : les agents tournent dans les API routes (pas de backend séparé).
+Données réelles pré-calculées dans `data/cache.json` → démo instantanée même sans clé.
 
 ## Répartition (équipe de 4)
 

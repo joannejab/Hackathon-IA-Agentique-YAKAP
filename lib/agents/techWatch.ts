@@ -1,4 +1,4 @@
-import { callAgentJSON } from "../anthropic";
+import { callAgentJSON } from "../llm";
 import { TechWatchOutput, type Course, type Trend } from "../schemas";
 
 /** Agent 2 — Tech-Watch : sélectionne les avancées tech pertinentes pour ce cours. */
