@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+/* CurriculumGap Agent — Direction B (dossier d'accréditation) + jauges de A.
+   Tokens : voir docs/DESIGN_FRONTEND.md */
+:root {
+  --paper: #f6f7f9;
+  --ink: #16181d;
+  --ink-soft: #5a6072;
+  --spine: #2d2a6e;
+  --verified: #1f6f5c;
+  --amber: #c77d1a;
+  --flag: #b23a48;
+  --rule: #d3d6dd;
+  --panel: #ffffff;
+}
+
+@theme inline {
+  /* couleurs (→ utilitaires bg-paper, text-ink, border-rule, etc.) */
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-spine: var(--spine);
+  --color-verified: var(--verified);
+  --color-amber: var(--amber);
+  --color-flag: var(--flag);
+  --color-rule: var(--rule);
+  --color-panel: var(--panel);
+
+  /* fonts (chargées dans layout.tsx) */
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-plex-mono);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* respect du reduced-motion : neutralise les animations décoratives */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
