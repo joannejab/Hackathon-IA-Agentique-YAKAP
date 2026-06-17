@@ -1,0 +1,69 @@
+[
+  {
+    "id": "ml-scia",
+    "title": "Machine Learning",
+    "major": "SCIA",
+    "hours": 48,
+    "syllabus": [
+      { "topic": "Régression linéaire & logistique", "depth": "advanced" },
+      { "topic": "Arbres de décision & ensembles (Random Forest, Gradient Boosting)", "depth": "advanced" },
+      { "topic": "Validation croisée & métriques d'évaluation", "depth": "intermediate" },
+      { "topic": "Feature engineering & sélection de variables", "depth": "intermediate" },
+      { "topic": "Réduction de dimension (PCA)", "depth": "intermediate" },
+      { "topic": "Introduction au déploiement de modèles", "depth": "intro" }
+    ]
+  },
+  {
+    "id": "dl-scia",
+    "title": "Deep Learning",
+    "major": "SCIA",
+    "hours": 42,
+    "syllabus": [
+      { "topic": "Réseaux de neurones & rétropropagation", "depth": "advanced" },
+      { "topic": "CNN pour la vision", "depth": "advanced" },
+      { "topic": "RNN & LSTM", "depth": "intermediate" },
+      { "topic": "Régularisation & optimisation", "depth": "intermediate" },
+      { "topic": "Transformers (théorie)", "depth": "intro" }
+    ]
+  },
+  {
+    "id": "nlp-scia",
+    "title": "Natural Language Processing",
+    "major": "SCIA",
+    "hours": 36,
+    "syllabus": [
+      { "topic": "Prétraitement & tokenisation", "depth": "advanced" },
+      { "topic": "Word embeddings (Word2Vec, GloVe)", "depth": "advanced" },
+      { "topic": "Classification de texte", "depth": "intermediate" },
+      { "topic": "Modèles séquence-à-séquence", "depth": "intermediate" },
+      { "topic": "BERT & transfer learning", "depth": "intro" }
+    ]
+  },
+  {
+    "id": "data-eng-scia",
+    "title": "Data Engineering",
+    "major": "SCIA",
+    "hours": 36,
+    "syllabus": [
+      { "topic": "SQL & modélisation de données", "depth": "advanced" },
+      { "topic": "Pipelines ETL / ELT", "depth": "advanced" },
+      { "topic": "Big Data (Spark)", "depth": "intermediate" },
+      { "topic": "Orchestration (Airflow)", "depth": "intermediate" },
+      { "topic": "Data warehousing", "depth": "intermediate" },
+      { "topic": "Bases vectorielles", "depth": "intro" }
+    ]
+  },
+  {
+    "id": "stats-scia",
+    "title": "Statistics & Probability",
+    "major": "SCIA",
+    "hours": 30,
+    "syllabus": [
+      { "topic": "Probabilités & variables aléatoires", "depth": "advanced" },
+      { "topic": "Tests d'hypothèses", "depth": "advanced" },
+      { "topic": "Régression statistique", "depth": "advanced" },
+      { "topic": "Inférence bayésienne", "depth": "intermediate" },
+      { "topic": "Séries temporelles", "depth": "intermediate" }
+    ]
+  }
+]

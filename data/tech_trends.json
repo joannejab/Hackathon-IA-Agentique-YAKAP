@@ -1,0 +1,14 @@
+[
+  { "id": "T-01", "name": "Retrieval-Augmented Generation (RAG)", "description": "Ancrer les LLM sur des données privées via récupération de documents pertinents avant génération.", "maturity": "growing" },
+  { "id": "T-02", "name": "Agents LLM (tool use, orchestration)", "description": "LLM autonomes qui planifient et appellent des outils pour accomplir des tâches multi-étapes.", "maturity": "growing" },
+  { "id": "T-03", "name": "MLOps & CI/CD de modèles", "description": "Industrialisation : versioning, déploiement continu, monitoring et détection de drift.", "maturity": "mainstream" },
+  { "id": "T-04", "name": "Bases de données vectorielles", "description": "Stockage et recherche par similarité d'embeddings, socle des systèmes RAG.", "maturity": "growing" },
+  { "id": "T-05", "name": "Fine-tuning efficace (LoRA, PEFT)", "description": "Adapter de grands modèles à faible coût via des techniques d'ajustement paramétrique.", "maturity": "growing" },
+  { "id": "T-06", "name": "Prompt engineering & évaluation", "description": "Conception et évaluation systématique de prompts pour fiabiliser les sorties LLM.", "maturity": "mainstream" },
+  { "id": "T-07", "name": "Quantization & inférence optimisée", "description": "Réduire la taille/latence des modèles pour le déploiement en production.", "maturity": "growing" },
+  { "id": "T-08", "name": "Détection & atténuation des hallucinations", "description": "Vérification factuelle et garde-fous pour fiabiliser les sorties génératives.", "maturity": "emerging" },
+  { "id": "T-09", "name": "Observabilité ML (drift, data quality)", "description": "Surveillance continue des données et performances en production.", "maturity": "mainstream" },
+  { "id": "T-10", "name": "Multimodalité (vision-langage)", "description": "Modèles combinant image et texte pour des tâches mixtes.", "maturity": "growing" },
+  { "id": "T-11", "name": "Embeddings & recherche sémantique", "description": "Représentations denses pour la recherche et le clustering sémantiques.", "maturity": "mainstream" },
+  { "id": "T-12", "name": "Évaluation de LLM (LLM-as-judge, benchmarks)", "description": "Méthodes d'évaluation automatique de la qualité des modèles génératifs.", "maturity": "emerging" }
+]

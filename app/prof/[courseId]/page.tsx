@@ -1,23 +1,22 @@
 import Link from "next/link";
-import { getMockAudit } from "@/lib/fixtures";
+import { getAudit } from "@/lib/audit-service";
+import { ValidateBar } from "@/components/ValidateBar";
 
-/**
- * Vue Prof — PLACEHOLDER runnable (Perso D : construire le dossier d'accréditation
- * avec citations en exposant + badge Fact-Check, cf. docs/DESIGN_FRONTEND.md).
- * Données via getMockAudit ; à remplacer par fetch("/api/audit?courseId=…") une fois le pipeline branché.
- * Next 16 : `params` est asynchrone.
- */
+/** Vue Prof — dossier d'accréditation : constat sourcé, modules, fact-check. Next 16 : params async. */
 export default async function ProfPage({
   params,
 }: {
   params: Promise<{ courseId: string }>;
 }) {
   const { courseId } = await params;
-  const audit = getMockAudit(courseId);
+  const { audit, source } = await getAudit(courseId);
+
+  const confColor =
+    audit.overallConfidence >= 0.7 ? "text-verified" : "text-amber";
 
   return (
     <main className="flex-1 px-6 py-12">
-      <div className="mx-auto max-w-2xl">
+      <article className="mx-auto max-w-2xl">
         <Link href="/chef" className="font-mono text-xs text-ink-soft hover:text-spine">
           ← vue chef de majeure
         </Link>
@@ -25,61 +24,90 @@ export default async function ProfPage({
         <header className="mt-3 flex items-baseline justify-between border-b border-rule pb-4">
           <div>
             <h1 className="font-display text-4xl text-ink">{audit.courseTitle}</h1>
-            <p className="font-mono text-xs uppercase tracking-widest text-ink-soft">
-              {audit.major} · 2026
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-ink-soft">
+              rapport d&apos;audit · {audit.major} · 2026
+              {source === "mock" && <span className="ml-2">(démo)</span>}
             </p>
           </div>
-          <span className="font-mono text-sm text-verified">
+          <span className={`shrink-0 rounded-full border border-rule px-3 py-1 font-mono text-sm ${confColor}`}>
             ✓ vérifié · {audit.overallConfidence.toFixed(2)}
           </span>
         </header>
 
-        <section className="mt-6">
+        <section className="mt-8">
           <h2 className="font-display text-2xl text-ink">Constat du gap</h2>
-          <ul className="mt-3 space-y-2">
+          <ul className="mt-3 space-y-3">
             {audit.gaps.map((g, i) => (
-              <li key={g.skill} className="text-ink">
+              <li
+                key={g.skill}
+                className="cite text-ink"
+                style={{ animationDelay: `${i * 90}ms` }}
+              >
                 <span className="font-medium">{g.skill}</span> — {g.evidence}
-                <sup className="ml-0.5 font-mono text-xs text-spine">{i + 1}</sup>
+                <a
+                  href={`#src-${i + 1}`}
+                  className="ml-0.5 align-super font-mono text-xs text-spine hover:underline"
+                >
+                  {i + 1}
+                </a>
               </li>
             ))}
+            {audit.gaps.length === 0 && (
+              <li className="text-ink-soft">Aucun gap significatif — cours à jour.</li>
+            )}
           </ul>
         </section>
 
         <section className="mt-8">
           <h2 className="font-display text-2xl text-ink">Modules suggérés</h2>
-          <ol className="mt-3 space-y-3">
+          <ol className="mt-3 space-y-4">
             {audit.suggestedModules.map((m, i) => (
-              <li key={m.title} className="border-l-2 border-spine pl-3">
+              <li key={m.title} className="border-l-2 border-spine pl-4">
                 <p className="text-ink">
                   <span className="font-mono text-xs text-spine">§{i + 1}</span>{" "}
                   <span className="font-medium">{m.title}</span>
                   <span className="font-mono text-xs text-ink-soft"> · {m.hours} h</span>
                 </p>
-                <p className="text-sm text-ink-soft">{m.rationale}</p>
+                <p className="mt-1 text-sm text-ink-soft">{m.rationale}</p>
+                {m.objectives.length > 0 && (
+                  <ul className="mt-1 list-disc pl-5 text-sm text-ink-soft">
+                    {m.objectives.map((o) => (
+                      <li key={o}>{o}</li>
+                    ))}
+                  </ul>
+                )}
               </li>
             ))}
           </ol>
         </section>
 
         <section className="mt-8 border-t border-rule pt-4">
-          <p className="font-mono text-xs uppercase tracking-widest text-ink-soft">
-            Sources
-          </p>
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-ink-soft">Sources</p>
           <ul className="mt-2 space-y-1 font-mono text-xs text-ink-soft">
             {audit.gaps.map((g, i) => (
-              <li key={g.skill}>
-                {i + 1}. {g.sourceRef}
+              <li key={g.skill} id={`src-${i + 1}`}>
+                {i + 1}. {g.sourceRef}{" "}
+                <span className="opacity-70">· confiance {g.confidence.toFixed(2)}</span>
               </li>
             ))}
           </ul>
-          {audit.flagged.map((f) => (
-            <p key={f.claim} className="mt-3 text-sm text-flag">
-              ⚑ Retiré par le Fact-Check : « {f.claim} » — {f.reason}
-            </p>
-          ))}
+
+          {audit.flagged.length > 0 && (
+            <div className="mt-4 rounded-md border border-flag/30 bg-flag/5 p-3">
+              <p className="font-mono text-xs uppercase tracking-widest text-flag">
+                ⚑ Retiré par le Fact-Check
+              </p>
+              {audit.flagged.map((f) => (
+                <p key={f.claim} className="mt-1 text-sm text-ink">
+                  « {f.claim} » <span className="text-ink-soft">— {f.reason}</span>
+                </p>
+              ))}
+            </div>
+          )}
         </section>
-      </div>
+
+        <ValidateBar courseTitle={audit.courseTitle} />
+      </article>
     </main>
   );
 }
