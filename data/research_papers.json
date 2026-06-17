@@ -1,0 +1,362 @@
+[
+  {
+    "id": "paper-transformer",
+    "title": "Attention Is All You Need",
+    "arxivId": "1706.03762",
+    "year": 2017,
+    "venue": "NeurIPS",
+    "abstract": "Introduit l'architecture Transformer fondée uniquement sur des mécanismes d'attention multi-tête, supprimant récurrence et convolution. L'encodeur empile des blocs multi-head self-attention + FFN avec résidus et layer norm. Le décodeur ajoute une cross-attention sur la sortie encodeur. Surpasse les meilleurs RNN/CNN sur WMT14 EN→DE (28.4 BLEU) et EN→FR (41.8 BLEU) avec un coût d'entraînement 8× moindre. Généralise à l'analyse syntaxique (WSJ). Fondement de tous les LLM, ViT, et architectures modernes.",
+    "keyContributions": [
+      "Remplacement total de la récurrence par l'attention : parallélisme d'entraînement maximal",
+      "Multi-head attention : capture de relations à plusieurs niveaux d'abstraction simultanément",
+      "Positional encoding sinusoïdal : gestion de séquences de longueur variable sans récurrence",
+      "Architecture encodeur-décodeur générique devenue le template de référence du domaine"
+    ],
+    "keywords": ["transformer", "attention", "seq2seq", "NLP"],
+    "relevantTo": ["scia-nlp", "scia-dl-cv"],
+    "adoptionStage": "industry-standard",
+    "citationsApprox": 130000
+  },
+  {
+    "id": "paper-bert",
+    "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+    "arxivId": "1810.04805",
+    "year": 2018,
+    "venue": "NAACL",
+    "abstract": "Établit le paradigme pré-entraînement bidirectionnel + fine-tuning supervisé en NLP. BERT est un encodeur Transformer pré-entraîné par deux objectifs : Masked Language Modeling (MLM, 15 % des tokens masqués à prédire) et Next Sentence Prediction (NSP). Le pré-entraînement sur BooksCorpus + Wikipédia anglais produit des représentations contextuelles transférables. Fine-tuné, BERT établit 11 nouveaux SOTA sur GLUE, SQuAD 1.1 et 2.0, SWAG. Montre qu'un même modèle de base suffit pour des tâches hétérogènes (classification, QA, NER) via un fine-tuning minimal.",
+    "keyContributions": [
+      "Pré-entraînement bidirectionnel : chaque token voit à la fois son contexte gauche et droit",
+      "MLM comme objectif auto-supervisé : pas besoin de labels pour le pré-entraînement",
+      "Paradigme 'pré-entraîner une fois, fine-tuner partout' devenu le standard industriel NLP",
+      "BERT-base (110M params) accessible : démocratisation du transfer learning en NLP"
+    ],
+    "keywords": ["BERT", "pretraining", "fine-tuning", "NLP", "bidirectional"],
+    "relevantTo": ["scia-nlp"],
+    "adoptionStage": "industry-standard",
+    "citationsApprox": 100000
+  },
+  {
+    "id": "paper-gpt3",
+    "title": "Language Models are Few-Shot Learners",
+    "arxivId": "2005.14165",
+    "year": 2020,
+    "venue": "NeurIPS",
+    "abstract": "GPT-3 (175 milliards de paramètres) montre qu'un LLM suffisamment grand peut résoudre des tâches nouvelles uniquement via des exemples dans le prompt (in-context learning), sans aucune mise à jour des poids. Évalué en zero-shot, one-shot et few-shot sur 42 benchmarks (traduction, QA, arithmétique, raisonnement). Les performances few-shot approchent ou dépassent les SOTA fine-tunés sur plusieurs tâches. Lance l'ère des LLM génératifs et du prompting comme interface universelle. Révèle la loi d'échelle : la performance croît de manière prévisible avec la taille du modèle et les données d'entraînement.",
+    "keyContributions": [
+      "In-context learning (ICL) : apprentissage de tâches nouvelles sans gradient, uniquement par des exemples dans le prompt",
+      "Scaling laws : relation log-linéaire entre taille du modèle et performance sur quasi toutes les tâches",
+      "Zero-shot compétitif sur NLP de haut niveau, rendant obsolète une partie du fine-tuning supervisé",
+      "Fondation du paradigme actuel : LLM + prompting comme interface universelle"
+    ],
+    "keywords": ["GPT-3", "few-shot", "in-context learning", "LLM", "scaling"],
+    "relevantTo": ["scia-nlp", "scia-ml-fundamentals"],
+    "adoptionStage": "industry-standard",
+    "citationsApprox": 35000
+  },
+  {
+    "id": "paper-rag",
+    "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+    "arxivId": "2005.11401",
+    "year": 2020,
+    "venue": "NeurIPS",
+    "abstract": "RAG combine un retriever dense (DPR, bi-encodeur BERT) et un générateur seq2seq (BART) dans une architecture entraînable bout-en-bout. Pour chaque question, le retriever sélectionne k passages pertinents depuis un index Wikipedia de 21M documents ; le générateur conditionne sa réponse sur ces passages. Deux variantes : RAG-Sequence (même document pour toute la réponse) et RAG-Token (document différent par token). Surpasse les LLM purement paramétriques sur NaturalQuestions, TriviaQA, WebQ et MS-MARCO. Démontre qu'ancrer la génération dans des sources externes réduit drastiquement les hallucinations et permet la mise à jour des connaissances sans re-entraînement.",
+    "keyContributions": [
+      "Architecture hybride retrieve-then-generate entraînable de bout en bout",
+      "Preuve empirique que l'ancrage documentaire réduit les hallucinations factuelles des LLM",
+      "Découplage entre la mémoire paramétrique (modèle) et la mémoire non-paramétrique (index) : mise à jour sans re-entraînement",
+      "Base conceptuelle de tous les systèmes RAG industriels modernes (LlamaIndex, LangChain, etc.)"
+    ],
+    "keywords": ["RAG", "retrieval", "grounding", "LLM", "hallucination", "DPR", "BART"],
+    "relevantTo": ["scia-nlp", "scia-ml-fundamentals", "scia-data-eng"],
+    "adoptionStage": "industry-standard",
+    "citationsApprox": 6000
+  },
+  {
+    "id": "paper-clip",
+    "title": "Learning Transferable Visual Models From Natural Language Supervision",
+    "arxivId": "2103.00020",
+    "year": 2021,
+    "venue": "ICML",
+    "abstract": "CLIP apprend conjointement un encodeur image (ViT ou ResNet) et un encodeur texte (Transformer) par contrastive learning sur 400 millions de paires image-texte collectées depuis le web. L'objectif : maximiser la similarité cosinus des représentations de paires correctes, minimiser celle des paires incorrectes (InfoNCE loss). Résultat : classification zero-shot compétitive avec des modèles supervisés sur ImageNet, sans aucun label visuel pendant l'entraînement. Généralise à des distributions très variées (croquis, cliparts, radiographies). Fondement de Stable Diffusion (CLIP comme encodeur de prompt) et de nombreux modèles multimodaux (BLIP, LLaVA).",
+    "keyContributions": [
+      "Apprentissage visuel par supervision textuelle naturelle : 400M paires web sans annotation manuelle",
+      "Zero-shot transfer record sur 27 benchmarks visuels, dont ImageNet à 76.2% top-1",
+      "Espace d'embedding commun image-texte : base de toute l'IA générative d'images (Stable Diffusion, DALL-E 2)",
+      "Robustesse aux shifts de distribution : fonctionne sur des types d'images jamais vus"
+    ],
+    "keywords": ["CLIP", "multimodal", "contrastive", "zero-shot", "vision-language"],
+    "relevantTo": ["scia-dl-cv"],
+    "adoptionStage": "industry-standard",
+    "citationsApprox": 25000
+  },
+  {
+    "id": "paper-lora",
+    "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+    "arxivId": "2106.09685",
+    "year": 2021,
+    "venue": "ICLR",
+    "abstract": "LoRA adapte les LLM en n'entraînant que deux petites matrices de bas rang (A∈R^{d×r}, B∈R^{r×k}, r≪d) ajoutées aux poids gelés du modèle. Lors de l'inférence, les deltas ΔW = BA sont fusionnés sans overhead. Sur GPT-3 175B, LoRA avec r=4 réduit les paramètres entraînables de 10 000× et la mémoire GPU de 3×, tout en égalant ou surpassant le fine-tuning complet sur GLUE et E2E NLG. Permet de fine-tuner LLaMA-7B sur un A100 40GB en quelques heures. Standard industriel pour l'adaptation de LLM : intégré dans Hugging Face PEFT, Axolotl, Unsloth.",
+    "keyContributions": [
+      "Décomposition rang faible des deltas de poids : seul r×(d+k)×2 paramètres entraînés (vs d×k en full fine-tuning)",
+      "Inférence sans overhead : fusion des matrices A,B dans les poids originaux avant déploiement",
+      "Égalité de performance avec le fine-tuning complet sur tâches NLP majeures",
+      "Adoptabilité : fonctionne sur GPU grand public, démocratise l'adaptation de LLM"
+    ],
+    "keywords": ["LoRA", "fine-tuning", "PEFT", "LLM", "parameter-efficient"],
+    "relevantTo": ["scia-nlp", "scia-ml-fundamentals", "scia-mlops"],
+    "adoptionStage": "industry-standard",
+    "citationsApprox": 12000
+  },
+  {
+    "id": "paper-ldm",
+    "title": "High-Resolution Image Synthesis with Latent Diffusion Models",
+    "arxivId": "2112.10752",
+    "year": 2021,
+    "venue": "CVPR",
+    "abstract": "Les modèles de diffusion opèrent dans l'espace latent d'un autoencoder (au lieu de l'espace pixel), réduisant la complexité computationnelle de 10 à 50× sans perte de qualité perceptuelle. L'autoencoder (VQ-VAE ou KL-regularized) compresse les images en latents 4×-8× plus petits. Le modèle de diffusion (U-Net conditionnel) opère dans cet espace. Le conditionnement texte-image est assuré par CLIP ou T5. Base technique de Stable Diffusion 1.x, 2.x et XL. État de l'art sur ImageNet 256×256 (FID 3.6), COCO et CelebA-HQ.",
+    "keyContributions": [
+      "Diffusion dans l'espace latent : vitesse d'entraînement et d'inférence 10-50× supérieure vs pixel-space",
+      "Architecture modulaire : autoencoder + diffusion + encodeur de condition interchangeables",
+      "Conditionnement flexible : texte, segmentation, inpainting dans un seul framework",
+      "Base de Stable Diffusion : premier modèle génératif d'images open-weights performant"
+    ],
+    "keywords": ["diffusion", "generative", "image synthesis", "latent space", "stable diffusion"],
+    "relevantTo": ["scia-dl-cv"],
+    "adoptionStage": "industry-standard",
+    "citationsApprox": 18000
+  },
+  {
+    "id": "paper-instructgpt",
+    "title": "Training language models to follow instructions with human feedback",
+    "arxivId": "2203.02155",
+    "year": 2022,
+    "venue": "NeurIPS",
+    "abstract": "InstructGPT affine GPT-3 pour suivre les instructions humaines via RLHF en trois étapes : (1) fine-tuning supervisé sur demonstrations humaines, (2) entraînement d'un Reward Model sur des paires de completions classées par des annotateurs, (3) optimisation PPO du LLM contre ce reward. InstructGPT 1.3B est préféré par 71% des annotateurs à GPT-3 175B. L'alignement améliore la véracité, réduit les sorties toxiques et améliore la suivie d'instructions complexes. Méthode adoptée dans ChatGPT, Claude, Gemini.",
+    "keyContributions": [
+      "Pipeline RLHF complet : SFT → Reward Model → PPO, devenu le standard d'alignement LLM",
+      "Preuve qu'un modèle plus petit et aligné bat un modèle plus grand non-aligné",
+      "Amélioration simultanée de la véracité, de la sécurité et de la qualité des instructions",
+      "Base de l'ensemble des assistants LLM commerciaux actuels (GPT-4, Claude, Gemini)"
+    ],
+    "keywords": ["RLHF", "alignment", "instruction tuning", "PPO", "reward model"],
+    "relevantTo": ["scia-nlp", "scia-ml-fundamentals"],
+    "adoptionStage": "industry-standard",
+    "citationsApprox": 14000
+  },
+  {
+    "id": "paper-cot",
+    "title": "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models",
+    "arxivId": "2201.11903",
+    "year": 2022,
+    "venue": "NeurIPS",
+    "abstract": "Le Chain-of-Thought (CoT) consiste à inclure dans le prompt des exemples few-shot avec des chaînes de raisonnement intermédiaires (étapes de résolution pas-à-pas) avant la réponse finale. Sur PaLM 540B, le CoT améliore de +45% sur GSM8K (problèmes mathématiques scolaires), +20% sur BIG-Bench Hard. La performance CoT n'émerge qu'au-delà de ~100B paramètres (propriété émergente). Fondement du prompting moderne : zero-shot CoT ('pense étape par étape'), program-of-thought, et l'ensemble des méthodes de raisonnement structuré.",
+    "keyContributions": [
+      "Démontre qu'inciter le modèle à expliciter son raisonnement intermédiaire améliore drastiquement les tâches complexes",
+      "Propriété émergente au-delà de 100B params : absent dans les petits modèles",
+      "Zero-shot CoT ('Let's think step by step') : technique universelle sans exemples annotés",
+      "Base de toutes les techniques de raisonnement LLM : ToT, GoT, RAT, ReAct"
+    ],
+    "keywords": ["chain-of-thought", "reasoning", "prompting", "emergent", "math"],
+    "relevantTo": ["scia-nlp"],
+    "adoptionStage": "industry-standard",
+    "citationsApprox": 11000
+  },
+  {
+    "id": "paper-flashattention",
+    "title": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
+    "arxivId": "2205.14135",
+    "year": 2022,
+    "venue": "NeurIPS",
+    "abstract": "FlashAttention réimplémente l'attention scaled dot-product en tenant compte de la hiérarchie mémoire GPU (SRAM vs HBM). Via le tiling (découpage des matrices Q, K, V en blocs traités en SRAM) et la recomputation (pas de stockage des matrices d'attention intermédiaires en backward), FlashAttention réduit la complexité mémoire de O(N²) à O(N) et accélère l'attention de 2-4× sur GPU A100. Permet des contextes bien plus longs (64K+ tokens) et est intégré dans PyTorch 2.0, xFormers, et tous les frameworks LLM modernes.",
+    "keyContributions": [
+      "IO-awareness : optimisation de l'attention via la hiérarchie SRAM/HBM du GPU",
+      "Mémoire O(N) vs O(N²) : contextes longs enfin tractables (64K, 128K tokens)",
+      "Vitesse 2-4× sur A100 par rapport à l'attention standard PyTorch",
+      "Intégré nativement dans PyTorch 2.0 : standard de fait pour tout entraînement LLM"
+    ],
+    "keywords": ["attention", "efficiency", "inference", "GPU", "long-context"],
+    "relevantTo": ["scia-dl-cv", "scia-mlops"],
+    "adoptionStage": "industry-standard",
+    "citationsApprox": 4000
+  },
+  {
+    "id": "paper-react",
+    "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+    "arxivId": "2210.03629",
+    "year": 2022,
+    "venue": "ICLR",
+    "abstract": "ReAct entrelace des traces de raisonnement ('Thought') et d'actions ('Act') dans la génération d'un LLM, permettant de combiner réflexion et appels d'outils externes en une seule boucle. Sur HotpotQA et Fever (QA multi-sauts), ReAct surpasse les approches 'action seule' de +34% et 'raisonnement seul' (CoT) de +20%. Sur ALFWorld et WebShop (tâches de navigation interactive), ReAct dépasse les baselines RL de 33%. La boucle Thought→Act→Observation peut s'exécuter en few-shot sans fine-tuning. Fondement conceptuel de LangChain (ReAct agent), LangGraph, CrewAI et de tous les frameworks agentiques modernes.",
+    "keyContributions": [
+      "Boucle Thought→Act→Observation : paradigme fondateur des agents LLM modernes",
+      "Synergies raisonnement + action : chaque thought guide l'action, chaque observation affine le raisonnement",
+      "Few-shot sans fine-tuning : applicable immédiatement à tout LLM capable de ICL",
+      "Base directe de LangChain ReAct agent, AutoGPT, et toute la génération actuelle de frameworks agentiques"
+    ],
+    "keywords": ["agents", "reasoning", "tool-use", "ReAct", "LLM"],
+    "relevantTo": ["scia-nlp", "scia-mlops"],
+    "adoptionStage": "industry-standard",
+    "citationsApprox": 5000
+  },
+  {
+    "id": "paper-sam",
+    "title": "Segment Anything",
+    "arxivId": "2304.02643",
+    "year": 2023,
+    "venue": "ICCV",
+    "abstract": "SAM (Segment Anything Model) est un modèle de fondation pour la segmentation d'images promptable, entraîné sur SA-1B (1.1 milliard de masques sur 11 millions d'images — le plus grand dataset de segmentation jamais créé). SAM accepte des prompts de type point, boîte englobante, ou masque approximatif, et produit des segmentations de haute qualité en temps réel (~50 ms). Il généralise en zero-shot à des domaines non vus (imagerie satellitaire, médicale, sous-marine) sans fine-tuning. SAM 2 (2024) étend le paradigme à la vidéo.",
+    "keyContributions": [
+      "Foundation model pour la segmentation : un seul modèle couvre toutes les classes et domaines",
+      "SA-1B : 1.1B masques annotés semi-automatiquement, rendu public",
+      "Prompting flexible (point, box, texte) : interface universelle pour la segmentation interactive",
+      "Zero-shot sur domaines spécialisés : médical, satellite, sous-marin sans fine-tuning"
+    ],
+    "keywords": ["segmentation", "foundation model", "vision", "zero-shot", "SAM"],
+    "relevantTo": ["scia-dl-cv"],
+    "adoptionStage": "industry-standard",
+    "citationsApprox": 9000
+  },
+  {
+    "id": "paper-qlora",
+    "title": "QLoRA: Efficient Finetuning of Quantized LLMs",
+    "arxivId": "2305.14314",
+    "year": 2023,
+    "venue": "NeurIPS",
+    "abstract": "QLoRA combine la quantification NF4 (Normal Float 4-bit) du modèle de base avec des adaptateurs LoRA entraînables en bf16. Trois innovations : quantification NF4 (meilleure que int4 pour les distributions gaussiennes), double quantification (compression des constantes de quantification), et paged optimizers (gestion mémoire GPU par pagination NVIDIA). Permet de fine-tuner LLaMA-65B sur un seul GPU A100 40GB. Guanaco, modèle fine-tuné via QLoRA sur 9h A100, atteint 99.3% des performances de ChatGPT sur Vicuna benchmark. Standard pour tout fine-tuning LLM sur GPU unique.",
+    "keyContributions": [
+      "NF4 (Normal Float 4-bit) : format de quantification théoriquement optimal pour poids gaussiens LLM",
+      "Double quantification : compression des constantes de quantification elles-mêmes",
+      "LLaMA-65B fine-tunable sur 1× A100 40GB : GPU unique suffit pour de grands modèles",
+      "Guanaco-65B à 99.3% de ChatGPT : qualité de fine-tuning préservée malgré la quantification"
+    ],
+    "keywords": ["QLoRA", "quantization", "fine-tuning", "efficiency", "NF4"],
+    "relevantTo": ["scia-ml-fundamentals", "scia-mlops"],
+    "adoptionStage": "industry-standard",
+    "citationsApprox": 7000
+  },
+  {
+    "id": "paper-dpo",
+    "title": "Direct Preference Optimization: Your Language Model is Secretly a Reward Model",
+    "arxivId": "2305.18290",
+    "year": 2023,
+    "venue": "NeurIPS",
+    "abstract": "DPO reformule l'alignement par préférences humaines comme un problème de classification binaire sur des paires (bonne réponse, mauvaise réponse), éliminant le modèle de récompense explicite et la boucle RL (PPO) de RLHF. La dérivation montre que le LLM est implicitement un modèle de récompense ; la loss DPO optimise directement la log-vraisemblance des paires préférées vs rejetées avec un terme KL. Plus stable que PPO, moins coûteux en GPU (pas de rollouts), et produit des modèles alignés comparables à RLHF sur TL;DR, Anthropic HH, OpenAI summarization. Méthode dominante en 2024-2025 pour l'alignement open-weights (Llama-3, Mistral-instruct).",
+    "keyContributions": [
+      "Élimination du reward model explicite et du RL : alignement en une seule passe de supervised learning",
+      "Équivalence théorique démontrée entre optimisation KL-constrained et classification sur paires",
+      "Stabilité d'entraînement supérieure à PPO : pas de mode collapse ni d'instabilité RL",
+      "Standard de l'alignement open-weights : Llama-3, Mistral, Qwen alignés par DPO ou variantes (IPO, ORPO)"
+    ],
+    "keywords": ["DPO", "alignment", "preference", "RLHF-free", "LLM"],
+    "relevantTo": ["scia-nlp", "scia-ml-fundamentals"],
+    "adoptionStage": "maturing",
+    "citationsApprox": 4000
+  },
+  {
+    "id": "paper-llama",
+    "title": "LLaMA: Open and Efficient Foundation Language Models",
+    "arxivId": "2302.13971",
+    "year": 2023,
+    "venue": "arXiv / Meta AI",
+    "abstract": "LLaMA (7B à 65B paramètres) montre qu'un LLM open-weights entraîné plus longtemps sur des données publiques de haute qualité (1.4T tokens : CommonCrawl, C4, GitHub, Wikipedia, Books, ArXiv, StackExchange) peut surpasser GPT-3 175B malgré une taille moindre. LLaMA-13B surpasse GPT-3 sur la majorité des benchmarks. Pré-entraînement efficace : RMSNorm, RoPE (positional encoding rotatif), SwiGLU activation, FlashAttention. Modèles rendus disponibles à la communauté (accès sur demande), catalysant l'écosystème open-weights : Alpaca, Vicuna, WizardLM, puis LLaMA-2, LLaMA-3.",
+    "keyContributions": [
+      "Scaling efficient : plus de tokens > plus de paramètres (compute-optimal via Chinchilla)",
+      "Open-weights : catalyseur de l'écosystème fine-tuning communautaire (1000+ dérivés)",
+      "Optimisations architecturales (RoPE, SwiGLU, RMSNorm) devenues standard dans LLaMA-2/3, Mistral, Qwen",
+      "Démonstration que des données publiques de qualité suffisent pour compétitiver avec les LLM propriétaires"
+    ],
+    "keywords": ["LLaMA", "open-weights", "foundation model", "efficient", "Meta"],
+    "relevantTo": ["scia-nlp", "scia-mlops"],
+    "adoptionStage": "industry-standard",
+    "citationsApprox": 13000
+  },
+  {
+    "id": "paper-react-toolformer",
+    "title": "Toolformer: Language Models Can Teach Themselves to Use Tools",
+    "arxivId": "2302.04761",
+    "year": 2023,
+    "venue": "NeurIPS",
+    "abstract": "Toolformer apprend en auto-supervision quand et comment appeler des APIs externes (calculatrice, Wikipedia, moteur de recherche, traducteur, calendrier) en insérant des appels d'outils directement dans le texte. La méthode génère des candidats d'appels par in-context learning, les filtre par l'utilité qu'ils apportent à la prédiction du texte suivant (réduction de perte de LM), et fine-tune sur les appels utiles retenus. GPT-J 6.7B équipé de Toolformer dépasse GPT-3 175B sur 5 tâches zero-shot. Première démonstration d'un LLM apprenant l'usage d'outils sans annotation humaine des appels.",
+    "keyContributions": [
+      "Auto-supervision pour l'usage d'outils : pas d'annotation humaine des appels API",
+      "Filtrage par utilité : seuls les appels qui réduisent la perte LM sont retenus",
+      "Généralisation zero-shot à de nouveaux outils non vus à l'entraînement",
+      "Précurseur direct des function calling APIs (OpenAI, Anthropic) et des agents modernes"
+    ],
+    "keywords": ["tool-use", "agents", "self-supervision", "API", "LLM"],
+    "relevantTo": ["scia-nlp", "scia-mlops"],
+    "adoptionStage": "maturing",
+    "citationsApprox": 2500
+  },
+  {
+    "id": "paper-mamba",
+    "title": "Mamba: Linear-Time Sequence Modeling with Selective State Spaces",
+    "arxivId": "2312.00752",
+    "year": 2023,
+    "venue": "arXiv (ICLR 2024 spotlight)",
+    "abstract": "Mamba propose des State Space Models (SSM) à sélectivité dépendante de l'entrée : les paramètres A, B, C des matrices SSM varient en fonction du token courant, permettant au modèle de sélectionner quelle information propager dans l'état caché. Contrairement au Transformer (O(N²) en mémoire et temps), Mamba est O(N) via une scan parallèle GPU. Sur des tâches de langage (Pile), Mamba-3B dépasse Transformer-3B. Vitesse d'inférence 5× supérieure pour les longues séquences (>16K tokens). Mamba-2 (2024) améliore encore la parallélisabilité. Alternative sérieuse au Transformer pour les longs contextes.",
+    "keyContributions": [
+      "Sélectivité dépendante de l'entrée : SSM dynamique capable de filtrage contextuel comme l'attention",
+      "Complexité O(N) : scalable à des séquences de millions de tokens",
+      "Vitesse inférence 5× vs Transformer pour N > 16K tokens",
+      "Compétitif avec les Transformers sur langage, génomique, audio : première vraie alternative architecturale"
+    ],
+    "keywords": ["state-space", "Mamba", "long-context", "efficiency", "SSM"],
+    "relevantTo": ["scia-nlp", "scia-dl-cv"],
+    "adoptionStage": "emerging",
+    "citationsApprox": 2000
+  },
+  {
+    "id": "paper-mixtral",
+    "title": "Mixtral of Experts",
+    "arxivId": "2401.04088",
+    "year": 2024,
+    "venue": "arXiv / Mistral AI",
+    "abstract": "Mixtral 8×7B est un LLM Sparse Mixture-of-Experts (SMoE) : chaque token est routé vers 2 des 8 experts FFN par token, activant 12.9B paramètres sur 46.7B totaux. Le routeur apprend à spécialiser les experts par tâche. Mixtral 8×7B surpasse LLaMA-2 70B et GPT-3.5 sur la plupart des benchmarks (MMLU, HumanEval, GSM8K) avec un coût d'inférence équivalent à un modèle 12.9B. Mixtral 8×22B (2024) est le plus grand modèle open-weights performant. L'architecture SMoE est réutilisée dans Grok-1 et les rumeurs de GPT-4 (16 experts).",
+    "keyContributions": [
+      "Sparse MoE : capacité d'un 47B au coût d'inférence d'un 13B",
+      "Top-2 routing : chaque token active 2/8 experts, spécialisation émergente",
+      "Surpasse LLaMA-2 70B et GPT-3.5 sur MMLU, HumanEval, GSM8K",
+      "Architecture SMoE open-weights : base de Grok, modèles MoE futurs"
+    ],
+    "keywords": ["mixture-of-experts", "MoE", "efficiency", "LLM", "Mistral"],
+    "relevantTo": ["scia-ml-fundamentals", "scia-mlops"],
+    "adoptionStage": "maturing",
+    "citationsApprox": 1500
+  },
+  {
+    "id": "paper-self-consistency",
+    "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+    "arxivId": "2203.11171",
+    "year": 2022,
+    "venue": "ICLR 2023",
+    "abstract": "La self-consistency remplace le décodage glouton (greedy) de CoT par un échantillonnage de plusieurs chaînes de raisonnement (température > 0), puis vote majoritaire sur les réponses finales. Sur GSM8K, self-consistency sur PaLM 540B passe de 56.5% (CoT greedy) à 74.4% (+17.9pt) ; sur SVAMP de 66.5% à 82.0%. Améliore également l'arithmétique (MultiArith +14%), le raisonnement de sens commun (StrategyQA +9%), et le raisonnement symbolique. Agnostique au modèle : fonctionne avec GPT-3, PaLM, T5. Coût : K inférences au lieu d'une (typiquement K=40).",
+    "keyContributions": [
+      "Vote majoritaire sur trajectoires multiples : réduction de l'erreur stochastique de CoT",
+      "+17.9% sur GSM8K vs CoT greedy : meilleure amélioration de raisonnement mathématique de son époque",
+      "Indépendant du modèle : fonctionne sur tout LLM capable de CoT",
+      "Base des méthodes d'ensemble LLM modernes (Best-of-N, MBPP pass@k)"
+    ],
+    "keywords": ["self-consistency", "reasoning", "sampling", "voting", "CoT"],
+    "relevantTo": ["scia-nlp"],
+    "adoptionStage": "maturing",
+    "citationsApprox": 3500
+  },
+  {
+    "id": "paper-whisper",
+    "title": "Robust Speech Recognition via Large-Scale Weak Supervision",
+    "arxivId": "2212.04356",
+    "year": 2022,
+    "venue": "ICML 2023",
+    "abstract": "Whisper est un système de reconnaissance vocale (ASR) entraîné sur 680 000 heures d'audio multilingue collecté depuis le web (supervision faible : transcriptions non vérifiées). Architecture Transformer encodeur-décodeur standard. Formulation multitâche : transcription, traduction, identification de langue, détection d'activité vocale en un seul modèle. Whisper large-v3 dépasse les SOTA supervisés sur 10+ langues sans fine-tuning. Robustesse au bruit, aux accents et aux domaines spécialisés (médical, juridique). Disponible open-source (MIT licence) en 5 tailles (tiny à large-v3).",
+    "keyContributions": [
+      "Supervision faible à grande échelle : 680K heures sans annotation fine, surpasse les modèles supervisés",
+      "Modèle multitâche unifié : ASR + traduction + détection langue en un seul décodage",
+      "Robustesse cross-domaine et cross-accent sans fine-tuning domaine-spécifique",
+      "Open-source MIT : démocratisation de l'ASR multilingue de haute qualité"
+    ],
+    "keywords": ["speech", "ASR", "multilingual", "weak supervision", "Whisper"],
+    "relevantTo": ["scia-nlp"],
+    "adoptionStage": "industry-standard",
+    "citationsApprox": 4500
+  }
+]
