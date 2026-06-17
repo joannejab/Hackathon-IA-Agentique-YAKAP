@@ -1,314 +1,69 @@
 [
   {
-    "id": "scia-nlp",
-    "title": "Traitement du Langage Naturel",
+    "id": "ml-scia",
+    "title": "Machine Learning",
     "major": "SCIA",
-    "year": 4,
-    "hours": 36,
-    "lastUpdated": "2022-09",
-    "owner": "Prof. A. Renaud",
-    "description": "Ce cours couvre les fondamentaux du NLP, des représentations vectorielles classiques aux premières architectures à attention. Il constitue l'introduction historique au domaine : tokenisation, embeddings contextuels via BERT, modèles séquentiels (LSTM/GRU) et tâches NLP classiques (classification, NER, résumé extractif). Les paradigmes post-2022 — LLM génératifs, RAG, agents, RLHF — ne sont pas abordés. Le cours s'appuie sur le toolkit NLTK et les premières versions de Hugging Face Transformers.",
-    "syllabus": "Le cours démarre par les représentations vectorielles (TF-IDF, word2vec, GloVe), progresse vers les architectures récurrentes (RNN, LSTM, GRU) pour la modélisation de séquences, puis introduit l'architecture Transformer encodeur via BERT. Les tâches couvertes sont la classification de texte, l'analyse de sentiment, la NER et une introduction au résumé extractif. Le fine-tuning supervisé de modèles pré-entraînés est effleuré en TP mais non approfondi. Aucune heure n'est consacrée aux LLM génératifs, à la génération de texte, au RAG, aux bases vectorielles, aux agents LLM, au RLHF ou au prompt engineering.",
-    "topics": [
-      {
-        "name": "Tokenisation, TF-IDF, sacs de mots",
-        "depth": "advanced",
-        "description": "Représentations bag-of-words, TF-IDF, normalisation lexicale (lemmatisation, stemming), n-grams. Travaux pratiques avec NLTK et sklearn. Les étudiants implémentent un moteur de recherche simple basé sur la similarité cosinus TF-IDF.",
-        "hoursAllocated": 4
-      },
-      {
-        "name": "Word embeddings (word2vec, GloVe, FastText)",
-        "depth": "advanced",
-        "description": "Représentations denses par prédiction contextuelle (Skip-gram, CBOW). Propriétés arithmétiques des embeddings (analogies). Visualisation par t-SNE. TP : entraînement word2vec sur corpus français, évaluation sur benchmarks d'analogie.",
-        "hoursAllocated": 4
-      },
-      {
-        "name": "RNN / LSTM / GRU pour séquences",
-        "depth": "advanced",
-        "description": "Problème du gradient qui disparaît, cellule LSTM et portes GRU, encodeur-décodeur, mécanisme d'attention de Bahdanau. TP : traduction seq2seq sur paires de phrases courtes avec PyTorch. Implémentation from-scratch d'une cellule LSTM.",
-        "hoursAllocated": 8
-      },
-      {
-        "name": "Introduction aux Transformers (BERT)",
-        "depth": "basic",
-        "description": "Architecture Transformer encodeur (multi-head attention, positional encoding, layer norm). Pré-entraînement BERT par masquage (MLM) et next sentence prediction. TP : classification de sentiment avec bert-base-uncased via Hugging Face pipeline. Le fine-tuning complet n'est pas réalisé faute de temps GPU. Les architectures décodeur (GPT-like) et les LLM génératifs ne sont pas couverts.",
-        "hoursAllocated": 6
-      },
-      {
-        "name": "Classification de texte & analyse de sentiment",
-        "depth": "intermediate",
-        "description": "Pipeline complet : vectorisation → modèle → évaluation. Comparaison logistic regression / SVM / LSTM / BERT pipeline. Métriques F1 macro/micro, courbes ROC. TP : analyse de sentiment sur dataset ALLOCINE (critiques de films français).",
-        "hoursAllocated": 6
-      },
-      {
-        "name": "Reconnaissance d'entités nommées (NER)",
-        "depth": "intermediate",
-        "description": "Schémas BIO/BIOES, CRF séquentiel, NER par LSTM-CRF puis par fine-tuning BERT. Évaluation span-level (CoNLL). TP : NER sur corpus journalistique français avec SpaCy et comparaison avec un modèle CamemBERT.",
-        "hoursAllocated": 5
-      },
-      {
-        "name": "Résumé extractif et systèmes de questions-réponses",
-        "depth": "basic",
-        "description": "Résumé extractif par scoring de phrases (TextRank). QA extractif avec BERT sur SQuAD : extraction de span de réponse. Aucune génération de texte libre ni RAG. TP : pipeline QA avec modèle Hugging Face pré-entraîné sur SQuAD-fr.",
-        "hoursAllocated": 3
-      }
-    ],
-    "notCovered": [
-      "LLM génératifs (GPT, Mistral, LLaMA)",
-      "RAG (Retrieval-Augmented Generation)",
-      "Bases de données vectorielles (Pinecone, Weaviate, Chroma)",
-      "Fine-tuning LLM (LoRA, QLoRA, RLHF, DPO)",
-      "Prompt engineering & structured outputs",
-      "Agents IA et orchestration (LangChain, LangGraph, CrewAI)",
-      "LLM observability et évaluation (LangSmith, Ragas)",
-      "Modèles multimodaux génératifs"
+    "hours": 48,
+    "syllabus": [
+      { "topic": "Régression linéaire & logistique", "depth": "advanced" },
+      { "topic": "Arbres de décision & ensembles (Random Forest, Gradient Boosting)", "depth": "advanced" },
+      { "topic": "Validation croisée & métriques d'évaluation", "depth": "intermediate" },
+      { "topic": "Feature engineering & sélection de variables", "depth": "intermediate" },
+      { "topic": "Réduction de dimension (PCA)", "depth": "intermediate" },
+      { "topic": "Introduction au déploiement de modèles", "depth": "intro" }
     ]
   },
   {
-    "id": "scia-ml-fundamentals",
-    "title": "Machine Learning Fondamentaux",
+    "id": "dl-scia",
+    "title": "Deep Learning",
     "major": "SCIA",
-    "year": 4,
-    "hours": 40,
-    "lastUpdated": "2023-09",
-    "owner": "Prof. M. Lefevre",
-    "description": "Socle théorique et pratique du machine learning supervisé et non supervisé classique. Le cours couvre l'ensemble du cycle ML pré-deep learning : modèles paramétriques et non paramétriques, méthodes d'ensemble, réduction de dimension, évaluation rigoureuse. Très solide sur sklearn et les fondements mathématiques, mais antérieur à l'ère LLM : ni fine-tuning, ni PEFT, ni architectures génératrices ne sont abordés.",
-    "syllabus": "Introduction aux fondements statistiques (biais-variance, régularisation, MLE). Modèles linéaires (ridge, lasso, elastic net). SVM à noyau. Arbres de décision, random forest, gradient boosting (XGBoost, LightGBM). Réseaux de neurones denses : rétropropagation, batch normalization, dropout. Clustering (k-means, DBSCAN, GMM). Réduction de dimension (PCA, t-SNE, UMAP). Validation croisée stratifiée, métriques (AUC, F1, NDCG), feature engineering. Pas de couverture des LLM, du fine-tuning PEFT, de la quantification ou des modèles génératifs.",
-    "topics": [
-      {
-        "name": "Fondements statistiques & régularisation",
-        "depth": "advanced",
-        "description": "Décomposition biais-variance, MLE/MAP, régularisation L1/L2/ElasticNet. Notion de surapprentissage et validation. TP : visualisation des effets de régularisation sur données synthétiques générées avec numpy.",
-        "hoursAllocated": 5
-      },
-      {
-        "name": "Modèles linéaires (régression & classification)",
-        "depth": "advanced",
-        "description": "Régression linéaire (OLS, ridge, lasso), régression logistique multinomiale, one-vs-rest. Gradient descent et variantes (SGD, Adam). TP : pipeline sklearn complet sur dataset de prédiction de salaires.",
-        "hoursAllocated": 5
-      },
-      {
-        "name": "SVM & arbres de décision",
-        "depth": "advanced",
-        "description": "SVM à marge maximale, kernel trick (RBF, polynomial), optimisation SMO. Arbres CART, critères d'impureté (Gini, entropie), pruning. TP : comparaison SVM/tree sur classification multi-classe, visualisation des frontières de décision.",
-        "hoursAllocated": 6
-      },
-      {
-        "name": "Méthodes d'ensemble (RF, GBM, XGBoost)",
-        "depth": "advanced",
-        "description": "Bagging et random forests, boosting AdaBoost, gradient boosting (GB, XGBoost, LightGBM, CatBoost). Feature importance, SHAP. TP : XGBoost sur dataset tabular Kaggle, tuning Optuna.",
-        "hoursAllocated": 7
-      },
-      {
-        "name": "Réseaux de neurones denses (MLP)",
-        "depth": "intermediate",
-        "description": "Rétropropagation, initialisations (He, Xavier), batch normalization, dropout, early stopping. Implémentation PyTorch d'un MLP de classification. Architecture limitée aux couches denses — pas de convolutions ni d'attention.",
-        "hoursAllocated": 6
-      },
-      {
-        "name": "Clustering & réduction de dimension",
-        "depth": "intermediate",
-        "description": "k-means, DBSCAN, clustering hiérarchique, GMM-EM. PCA (SVD), t-SNE, UMAP pour la visualisation. TP : segmentation client sur données RFM.",
-        "hoursAllocated": 5
-      },
-      {
-        "name": "Validation croisée & métriques d'évaluation",
-        "depth": "advanced",
-        "description": "K-fold, stratified K-fold, leave-one-out, nested CV. Métriques de classification (precision/recall/F1, AUC-ROC, Average Precision) et régression (MAE, RMSE, MAPE). Calibration de probabilités (Platt, isotonic). Tests de significativité statistique.",
-        "hoursAllocated": 4
-      },
-      {
-        "name": "Feature engineering classique",
-        "depth": "intermediate",
-        "description": "Encodage catégoriel (OHE, target encoding, embeddings pour catégories hautes cardinalités), gestion des valeurs manquantes, transformations numériques (log, box-cox), interaction features, sélection de features (RFE, mutual information).",
-        "hoursAllocated": 2
-      }
-    ],
-    "notCovered": [
-      "LLM et fine-tuning (LoRA, QLoRA, RLHF, DPO)",
-      "RAG et bases vectorielles",
-      "Quantification de modèles",
-      "Modèles de fondation et in-context learning",
-      "Agents IA",
-      "Mixture of Experts (MoE)"
-    ]
-  },
-  {
-    "id": "scia-dl-cv",
-    "title": "Deep Learning & Computer Vision",
-    "major": "SCIA",
-    "year": 4,
-    "hours": 44,
-    "lastUpdated": "2024-09",
-    "owner": "Prof. S. Diallo",
-    "description": "Architectures profondes pour la vision par ordinateur, de la CNN classique aux Vision Transformers. Le cours est relativement à jour (2024) sur les architectures discriminatives, mais ne couvre pas les modèles génératifs récents (Stable Diffusion, DALL-E) ni le paradigme foundation models pour la vision (SAM, CLIP zero-shot avancé). Forte composante GPU (cluster EPITA A100).",
-    "syllabus": "Architectures CNN (LeNet → ResNet → EfficientNet). Techniques d'entraînement avancées : data augmentation, mixup, transfer learning. Détection d'objets (R-CNN family, YOLO). Segmentation sémantique et d'instances (U-Net, Mask R-CNN). Vision Transformers (ViT, DeiT). Introduction CLIP et vision multimodale. Aucune heure sur Stable Diffusion, modèles de diffusion latente, NeRF, ou Segment Anything en profondeur.",
-    "topics": [
-      {
-        "name": "CNN : architectures fondatrices (LeNet, AlexNet, VGG, ResNet, EfficientNet)",
-        "depth": "advanced",
-        "description": "Convolution 2D, pooling, batch norm dans les réseaux profonds. Skip connections et réseaux résiduels. Scaling lois d'EfficientNet. TP : entraînement ResNet-18 from scratch sur CIFAR-10, puis fine-tuning EfficientNet-B0 sur dataset custom.",
-        "hoursAllocated": 8
-      },
-      {
-        "name": "Augmentation de données & transfer learning",
-        "depth": "advanced",
-        "description": "Stratégies d'augmentation (flip, crop, color jitter, Mixup, CutMix, RandAugment). Transfer learning : feature extraction vs full fine-tuning. Domain adaptation. TP : comparaison fine-tuning vs scratch sur dataset médical (radiographies).",
-        "hoursAllocated": 6
-      },
-      {
-        "name": "Détection d'objets (YOLO, Faster R-CNN)",
-        "depth": "intermediate",
-        "description": "Two-stage (R-CNN, Fast R-CNN, Faster R-CNN) vs one-stage (YOLO v5/v8, SSD, RetinaNet). Anchor boxes, IoU, NMS. Évaluation mAP. TP : détection de défauts industriels avec YOLOv8.",
-        "hoursAllocated": 8
-      },
-      {
-        "name": "Segmentation sémantique et d'instances (U-Net, Mask R-CNN)",
-        "depth": "intermediate",
-        "description": "Segmentation pixel-level vs instance-level. Architectures encoder-decoder (U-Net). Mask R-CNN = Faster R-CNN + tête de segmentation. TP : segmentation de tumeurs sur images IRM avec U-Net PyTorch.",
-        "hoursAllocated": 6
-      },
-      {
-        "name": "Vision Transformers (ViT, DeiT, Swin)",
-        "depth": "intermediate",
-        "description": "Patch embedding, position encoding, architecture ViT-B/16. DeiT : distillation sans données massives. Swin : fenêtres glissantes pour la hiérarchie. Comparaison CNN vs ViT sur ImageNet. TP : fine-tuning Swin-T sur dataset de plantes.",
-        "hoursAllocated": 8
-      },
-      {
-        "name": "Introduction au multimodal (CLIP)",
-        "depth": "basic",
-        "description": "Contrastive learning image-texte. Architecture CLIP : encodeur image (ViT) + encodeur texte (Transformer). Zero-shot classification. TP : classification zero-shot avec CLIP OpenAI sur 5 classes custom — pas d'approfondissement de BLIP, LLaVA ou des modèles génératifs vision.",
-        "hoursAllocated": 4
-      },
-      {
-        "name": "Optimisation & régularisation profonde",
-        "depth": "advanced",
-        "description": "Adam, AdamW, schedulers (cosine annealing, warmup). Gradient clipping, label smoothing, stochastic depth. Profiling GPU (torch.profiler). TP : debugging d'un run défaillant via TensorBoard et analyse de la courbe de loss.",
-        "hoursAllocated": 4
-      }
-    ],
-    "notCovered": [
-      "Modèles de diffusion (Stable Diffusion, DALL-E, SDXL)",
-      "Segment Anything Model (SAM) en profondeur",
-      "NeRF et reconstruction 3D",
-      "Multimodal génératif (LLaVA, Flamingo, BLIP-2)",
-      "Foundation models vision à grande échelle",
-      "Génération vidéo (Sora-like)"
-    ]
-  },
-  {
-    "id": "scia-data-eng",
-    "title": "Data Engineering pour l'IA",
-    "major": "SCIA",
-    "year": 4,
-    "hours": 38,
-    "lastUpdated": "2023-09",
-    "owner": "Prof. K. N'Guyen",
-    "description": "Construction de pipelines de données fiables pour alimenter des modèles ML en production. Le cours est solide sur les architectures batch (Airflow, Spark) et le data warehousing, mais date d'avant la généralisation des bases vectorielles et des pipelines RAG. Aucune heure sur l'ingestion de données pour LLM (chunking, embedding, indexation vectorielle) ni sur les architectures de données spécifiques à l'IA générative.",
-    "syllabus": "SQL avancé et modélisation dimensionnelle. ETL/ELT avec Airflow et dbt. Big Data : Spark (DataFrames, Spark SQL, Spark Streaming). Architecture lakehouse (Delta Lake, Iceberg). Kafka pour le streaming événementiel. Qualité des données (Great Expectations). Pas de vector databases, pas de pipelines d'embedding ni d'ingestion orientée RAG.",
-    "topics": [
-      {
-        "name": "SQL avancé & modélisation dimensionnelle",
-        "depth": "advanced",
-        "description": "Fenêtres analytiques (ROW_NUMBER, LAG/LEAD, NTILE), CTEs récursives, optimisation de requêtes (EXPLAIN ANALYZE, index). Modélisation en étoile et flocon (Kimball). TP : construction d'un data mart de ventes sur PostgreSQL avec dbt.",
-        "hoursAllocated": 7
-      },
-      {
-        "name": "ETL/ELT & orchestration (Airflow, dbt)",
-        "depth": "advanced",
-        "description": "Architecture ELT vs ETL. DAGs Airflow : operateurs, hooks, XCom, backfill. dbt : transformations SQL versionnées, tests, documentation. TP : pipeline complet de chargement quotidien d'une API météo vers un DWH BigQuery.",
-        "hoursAllocated": 8
-      },
-      {
-        "name": "Big Data : Spark (DataFrames, SQL, Streaming)",
-        "depth": "advanced",
-        "description": "Architecture Spark (driver, executors, partitions). DataFrames API vs RDD. Spark SQL sur données parquet/delta. Spark Structured Streaming sur Kafka. TP : analyse de logs web en batch et micro-batch sur cluster local.",
-        "hoursAllocated": 8
-      },
-      {
-        "name": "Architecture lakehouse (Delta Lake, Iceberg)",
-        "depth": "intermediate",
-        "description": "Médaillon architecture (bronze/silver/gold). ACID sur objets cloud. Time travel et versionning. Comparaison Delta vs Iceberg vs Hudi. TP : implémentation d'un lakehouse sur MinIO (S3-compatible) avec Delta Lake.",
-        "hoursAllocated": 5
-      },
-      {
-        "name": "Streaming événementiel (Kafka)",
-        "depth": "intermediate",
-        "description": "Topics, partitions, consumer groups, offsets, Kafka Connect. Garanties de livraison (at-least-once, exactly-once). TP : pipeline de détection de fraude temps réel (Kafka → Spark Streaming → alerte).",
-        "hoursAllocated": 5
-      },
-      {
-        "name": "Qualité & gouvernance des données (Great Expectations, dbt tests)",
-        "depth": "intermediate",
-        "description": "Contrats de données, profiling automatique, règles de validation (null rate, unicité, plages). Data lineage (OpenLineage). TP : suite de tests Great Expectations sur dataset de production simulé avec injections d'anomalies.",
-        "hoursAllocated": 5
-      }
-    ],
-    "notCovered": [
-      "Bases de données vectorielles (Pinecone, Weaviate, Chroma, Qdrant)",
-      "Pipelines d'embedding et chunking pour RAG",
-      "Ingestion de documents non structurés pour LLM",
-      "Feature stores modernes (Feast, Tecton)",
-      "Pipelines d'évaluation LLM",
-      "Architectures de données pour l'IA générative"
-    ]
-  },
-  {
-    "id": "scia-mlops",
-    "title": "MLOps & Industrialisation",
-    "major": "SCIA",
-    "year": 4,
     "hours": 42,
-    "lastUpdated": "2024-09",
-    "owner": "Prof. L. Caron",
-    "description": "Mise en production, suivi et fiabilisation des modèles ML classiques. C'est le cours le plus à jour du cursus : CI/CD, Docker, K8s, MLflow et monitoring de drift sont correctement couverts. Cependant, le cours ne traite pas du LLMOps (observabilité spécifique aux LLM, évaluation RAG, tracing de chaînes d'agents) ni du serving de grands modèles (vLLM, quantification à l'inférence). Le terrain 'MLOps pour les LLM' reste entièrement à combler.",
-    "syllabus": "Tracking d'expériences avec MLflow (runs, artifacts, model registry). Conteneurisation Docker et orchestration Kubernetes pour le serving. CI/CD pour le ML (GitHub Actions, test de modèles). Monitoring de drift (data drift, concept drift, alerting). Feature stores. Serving REST/gRPC (FastAPI, BentoML). Pas de LLMOps : ni LangSmith, ni Ragas, ni Phoenix, ni serving LLM (vLLM, Ollama).",
-    "topics": [
-      {
-        "name": "Tracking d'expériences (MLflow)",
-        "depth": "advanced",
-        "description": "MLflow Tracking : log de paramètres, métriques, artifacts. Model Registry : staging, production, archivage. TP : benchmark de 20 combinaisons hyperparamètres sur classification, comparaison dans l'UI MLflow.",
-        "hoursAllocated": 6
-      },
-      {
-        "name": "Conteneurisation & déploiement (Docker, Kubernetes)",
-        "depth": "advanced",
-        "description": "Dockerfile multi-stage pour applications ML, docker-compose pour environnements locaux. Kubernetes : pods, deployments, services, HPA (autoscaling). Helm charts pour déploiements reproductibles. TP : déploiement d'un modèle sklearn sur K8s local (minikube) avec HPA basé sur la latence.",
-        "hoursAllocated": 9
-      },
-      {
-        "name": "CI/CD pour le ML (GitHub Actions)",
-        "depth": "advanced",
-        "description": "Pipeline CI : lint, tests unitaires, tests d'intégration sur le modèle (slicing tests, invariance tests). CD : re-entraînement déclenché par drift ou schedule, promotion automatique si métriques OK. TP : pipeline complet GitHub Actions de train → test → push Docker → deploy.",
-        "hoursAllocated": 7
-      },
-      {
-        "name": "Monitoring & drift de modèles (Evidently)",
-        "depth": "advanced",
-        "description": "Data drift (KS test, Population Stability Index), concept drift, data quality monitoring. Dashboard Evidently sur données de production. Alerting (Prometheus/Grafana). TP : simulation de drift progressif sur dataset tabular, déclenchement d'alerte et re-entraînement.",
-        "hoursAllocated": 7
-      },
-      {
-        "name": "Feature stores (Feast)",
-        "depth": "intermediate",
-        "description": "Problème du training-serving skew. Feature stores : registre, offline store (Parquet/BigQuery), online store (Redis). Feast : feature views, entity, point-in-time joins. TP : feature store pour un modèle de recommandation avec Feast + Redis.",
-        "hoursAllocated": 5
-      },
-      {
-        "name": "Serving de modèles (FastAPI, BentoML, REST/gRPC)",
-        "depth": "intermediate",
-        "description": "Serving synchrone (REST FastAPI) vs asynchrone (queues). BentoML pour packaging et serving ML. Optimisation latence (batch prediction, ONNX runtime). TP : serving d'un modèle de classification d'images avec FastAPI + ONNX, benchmark avec locust.",
-        "hoursAllocated": 8
-      }
-    ],
-    "notCovered": [
-      "LLMOps : tracing de chaînes LLM (LangSmith, Langfuse, Phoenix)",
-      "Évaluation de pipelines RAG (Ragas, TruLens)",
-      "Serving de grands modèles (vLLM, Ollama, TGI)",
-      "Quantification à l'inférence (GPTQ, AWQ, int4)",
-      "Monitoring spécifique aux LLM (hallucination rate, toxicité)",
-      "Fine-tuning LLM en production (PEFT, LoRA, QLoRA)",
-      "Orchestration d'agents en production"
+    "syllabus": [
+      { "topic": "Réseaux de neurones & rétropropagation", "depth": "advanced" },
+      { "topic": "CNN pour la vision", "depth": "advanced" },
+      { "topic": "RNN & LSTM", "depth": "intermediate" },
+      { "topic": "Régularisation & optimisation", "depth": "intermediate" },
+      { "topic": "Transformers (théorie)", "depth": "intro" }
+    ]
+  },
+  {
+    "id": "nlp-scia",
+    "title": "Natural Language Processing",
+    "major": "SCIA",
+    "hours": 36,
+    "syllabus": [
+      { "topic": "Prétraitement & tokenisation", "depth": "advanced" },
+      { "topic": "Word embeddings (Word2Vec, GloVe)", "depth": "advanced" },
+      { "topic": "Classification de texte", "depth": "intermediate" },
+      { "topic": "Modèles séquence-à-séquence", "depth": "intermediate" },
+      { "topic": "BERT & transfer learning", "depth": "intro" }
+    ]
+  },
+  {
+    "id": "data-eng-scia",
+    "title": "Data Engineering",
+    "major": "SCIA",
+    "hours": 36,
+    "syllabus": [
+      { "topic": "SQL & modélisation de données", "depth": "advanced" },
+      { "topic": "Pipelines ETL / ELT", "depth": "advanced" },
+      { "topic": "Big Data (Spark)", "depth": "intermediate" },
+      { "topic": "Orchestration (Airflow)", "depth": "intermediate" },
+      { "topic": "Data warehousing", "depth": "intermediate" },
+      { "topic": "Bases vectorielles", "depth": "intro" }
+    ]
+  },
+  {
+    "id": "stats-scia",
+    "title": "Statistics & Probability",
+    "major": "SCIA",
+    "hours": 30,
+    "syllabus": [
+      { "topic": "Probabilités & variables aléatoires", "depth": "advanced" },
+      { "topic": "Tests d'hypothèses", "depth": "advanced" },
+      { "topic": "Régression statistique", "depth": "advanced" },
+      { "topic": "Inférence bayésienne", "depth": "intermediate" },
+      { "topic": "Séries temporelles", "depth": "intermediate" }
     ]
   }
 ]
