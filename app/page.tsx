@@ -49,6 +49,13 @@ export default function Home() {
             </p>
           </Link>
         </div>
+
+        <Link
+          href="/audit/new"
+          className="mt-4 inline-block rounded-md bg-spine px-5 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
+        >
+          + Nouvel audit (ajouter un cours)
+        </Link>
       </div>
     </main>
   );

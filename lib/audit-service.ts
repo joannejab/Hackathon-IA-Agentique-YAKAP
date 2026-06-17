@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { getCourses, getCourseById, getJobs, getTrends } from "./data";
 import { runAudit, toSummary } from "./pipeline";
@@ -16,6 +16,22 @@ export type AuditSource = "cache" | "live" | "mock";
 
 const CACHE_PATH = join(process.cwd(), "data", "cache.json");
 const memCache = new Map<string, CourseAudit>();
+/**
+ * Enregistre un audit créé à la volée (flux "Nouvel audit").
+ * Persiste dans data/cache.json → visible dans la vue Chef et après redémarrage,
+ * et robuste au dev multi-worker (la mémoire process n'est pas partagée).
+ */
+export function addSessionAudit(audit: CourseAudit): void {
+  memCache.set(audit.courseId, audit);
+  try {
+    const cache = readCache() ?? { generatedAt: new Date().toISOString(), audits: {} };
+    cache.audits[audit.courseId] = audit;
+    cache.generatedAt = new Date().toISOString();
+    writeFileSync(CACHE_PATH, JSON.stringify(cache, null, 2));
+  } catch (err) {
+    console.error("[audit-service] écriture cache échouée:", err);
+  }
+}
 
 type CacheFile = { generatedAt: string; audits: Record<string, CourseAudit> };
 

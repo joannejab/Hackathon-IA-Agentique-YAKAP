@@ -59,6 +59,12 @@ export type Trend = z.infer<typeof Trend>;
 /* SORTIES DES AGENTS — produites par Perso B                         */
 /* ------------------------------------------------------------------ */
 
+/** Agent 0 — Syllabus-Parser : texte collé → syllabus structuré */
+export const SyllabusParseOutput = z.object({
+  syllabus: z.array(SyllabusItem),
+});
+export type SyllabusParseOutput = z.infer<typeof SyllabusParseOutput>;
+
 /** Agent 1 — Scanner : compétences demandées + fréquence */
 export const ScannerOutput = z.object({
   skills: z.array(

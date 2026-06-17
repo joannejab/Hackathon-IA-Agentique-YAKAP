@@ -2,6 +2,9 @@ import Link from "next/link";
 import { getAllSummaries } from "@/lib/audit-service";
 import { DriftGauge } from "@/components/DriftGauge";
 
+// Toujours relire le cache (inclut les cours ajoutés à la volée).
+export const dynamic = "force-dynamic";
+
 /** Vue Chef de majeure — jauges de dérive par cours, triées par sévérité. */
 export default function ChefPage() {
   const { summaries, source } = getAllSummaries();
@@ -22,10 +25,18 @@ export default function ChefPage() {
               audit continu · {summaries.length} cours
             </p>
           </div>
-          <p className="font-mono text-sm text-verified">
-            <span aria-hidden>⦿</span> live · confiance moy {avgConfidence.toFixed(2)}
-            {source === "mock" && <span className="ml-2 text-ink-soft">(démo)</span>}
-          </p>
+          <div className="flex flex-col items-end gap-2">
+            <Link
+              href="/audit/new"
+              className="rounded-md bg-spine px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
+            >
+              + Nouvel audit
+            </Link>
+            <p className="font-mono text-sm text-verified">
+              <span aria-hidden>⦿</span> live · confiance moy {avgConfidence.toFixed(2)}
+              {source === "mock" && <span className="ml-2 text-ink-soft">(démo)</span>}
+            </p>
+          </div>
         </header>
 
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

@@ -4,6 +4,7 @@ import { runCourseMapper } from "./agents/courseMapper";
 import { runGapReporter } from "./agents/gapReporter";
 import { runFactChecker } from "./agents/factChecker";
 import { computeSkillFrequencies, lookupDemand } from "./market";
+import type { AuditEvent, AgentKey } from "./audit-events";
 import type {
   Course,
   Job,
@@ -51,18 +52,39 @@ export async function runAudit(
   course: Course,
   jobs: Job[],
   trends: Trend[],
+  onEvent: (e: AuditEvent) => void = () => {},
 ): Promise<CourseAudit> {
+  // Exécute un agent en émettant start/done (avec un résumé) pour la trace live.
+  const step = async <T>(
+    agent: AgentKey,
+    fn: () => Promise<T>,
+    summarize: (r: T) => string,
+  ): Promise<T> => {
+    onEvent({ type: "agent", agent, status: "start" });
+    const r = await fn();
+    onEvent({ type: "agent", agent, status: "done", summary: summarize(r) });
+    return r;
+  };
+
   // Fréquences marché calculées en dur (fiables) — partagées avec les agents 4 et 5.
   const freqs = computeSkillFrequencies(jobs);
 
   const [scan, tech, mapped] = await Promise.all([
-    runScanner(jobs),
-    runTechWatch(course, trends),
-    runCourseMapper(course),
+    step("scanner", () => runScanner(jobs), (s) => `${s.skills.length} compétences détectées`),
+    step("techwatch", () => runTechWatch(course, trends), (t) => `${t.trends.length} tendances retenues`),
+    step("coursemapper", () => runCourseMapper(course), (m) => `${m.covered.length} sujets couverts`),
   ]);
 
-  const report = await runGapReporter(course.title, scan, tech, mapped, freqs);
-  const facts = await runFactChecker(report, { course, jobs, trends, marketFreq: freqs });
+  const report = await step(
+    "gapreporter",
+    () => runGapReporter(course.title, scan, tech, mapped, freqs),
+    (r) => `${r.gaps.length} gaps · ${r.suggestedModules.length} modules`,
+  );
+  const facts = await step(
+    "factchecker",
+    () => runFactChecker(report, { course, jobs, trends, marketFreq: freqs }),
+    (f) => `${f.flagged.length} flag(s) · confiance ${f.overallConfidence.toFixed(2)}`,
+  );
 
   // Fusionne chaque gap avec son verdict fact-check ; ne garde que ce qui est soutenu.
   // Et OVERRIDE demandPct avec la valeur déterministe (anti-hallucination des %).
