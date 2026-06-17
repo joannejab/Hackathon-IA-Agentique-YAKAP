@@ -12,6 +12,12 @@
   --flag: #b23a48;
   --rule: #d3d6dd;
   --panel: #ffffff;
+
+  /* canaux de preuve (traçabilité) */
+  --ch-market: #2d2a6e; /* marché de l'emploi (indigo/spine) */
+  --ch-tech: #c77d1a; /* état de l'art (ambre) */
+  --ch-research: #2f6f8f; /* recherche (bleu-encre) */
+  --ch-coverage: #b23a48; /* couverture cours (rouge) */
 }
 
 @theme inline {
@@ -25,6 +31,10 @@
   --color-flag: var(--flag);
   --color-rule: var(--rule);
   --color-panel: var(--panel);
+  --color-ch-market: var(--ch-market);
+  --color-ch-tech: var(--ch-tech);
+  --color-ch-research: var(--ch-research);
+  --color-ch-coverage: var(--ch-coverage);
 
   /* fonts (chargées dans layout.tsx) */
   --font-display: var(--font-fraunces);
@@ -51,6 +61,21 @@ body {
 }
 .cite {
   animation: citeReveal 0.4s ease both;
+}
+
+/* dépliage de la chaîne de preuves (drill-down) */
+@keyframes traceReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.trace-open {
+  animation: traceReveal 0.28s ease both;
 }
 
 /* respect du reduced-motion : neutralise les animations décoratives */

@@ -18,8 +18,9 @@ export default function Home() {
         </h1>
         <p className="mt-4 max-w-xl text-ink-soft">
           Des agents comparent en continu le contenu réel de vos cours au marché
-          de l&apos;emploi et à l&apos;état de l&apos;art tech, puis proposent
-          des modules — chaque constat étant vérifié contre l&apos;hallucination.
+          de l&apos;emploi, à l&apos;état de l&apos;art tech et à la recherche.
+          Chaque constat se déplie jusqu&apos;à sa source brute — transparence
+          totale, du verdict à la donnée.
         </p>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2">
@@ -37,7 +38,7 @@ export default function Home() {
           </Link>
 
           <Link
-            href="/prof/ml-scia"
+            href="/prof/scia-nlp"
             className="group rounded-md border border-rule bg-panel p-6 transition-colors hover:border-spine focus-visible:outline focus-visible:outline-2 focus-visible:outline-spine"
           >
             <p className="font-mono text-xs uppercase tracking-widest text-spine">
@@ -45,7 +46,7 @@ export default function Home() {
             </p>
             <p className="mt-2 font-display text-2xl text-ink">Mon cours</p>
             <p className="mt-1 text-sm text-ink-soft">
-              Rapport de gap détaillé, sourcé, + modules suggérés.
+              Rapport traçable : chaque gap remonte à ses offres, technos et publications.
             </p>
           </Link>
         </div>

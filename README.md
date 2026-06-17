@@ -37,12 +37,32 @@ Tout en full-stack Next : les agents tournent dans les API routes (pas de backen
 | **D — UI/Pitch** | vues Chef & Prof + pitch | `app/page.tsx`, `app/chef/*`, `app/prof/*` | 🟡 placeholders runnables + design tokens prêts |
 
 > **Source de vérité = `lib/schemas.ts`.** On code tous contre ces schémas. On n'y touche qu'à plusieurs.
-> Fixtures mock au bon format dans `lib/fixtures.ts` → B et D bossent sans dépendre l'un de l'autre.
 
-## Contrats des 5 agents
+## Traçabilité / provenance (transparence totale)
 
-`Scanner` → `TechWatch` → `CourseMapper` (parallèles) → `GapReporter` → `FactChecker` → `CourseAudit`.
+> Objectif : pouvoir **remonter de chaque conclusion jusqu'à la donnée brute qui la justifie**,
+> et inversement partir d'une donnée pour voir quelles conclusions s'appuient dessus.
+
+- **Moteur déterministe** : [`lib/provenance.ts`](lib/provenance.ts) calcule chaque gap **avec sa
+  chaîne de preuves complète** — sans LLM, donc 100% reproductible et traçable par construction.
+- **Réconciliation des compétences** : [`lib/canonical.ts`](lib/canonical.ts) ramène les libellés
+  hétérogènes (offres, syllabus, trends, papiers) à une compétence canonique unique.
+- **4 canaux de preuve** par conclusion : marché (offres) · état de l'art (trends) · recherche
+  (papiers) · couverture (syllabus). Le **score de confiance est décomposé** en facteurs explicites.
+- **Vue Prof** [`app/prof/[courseId]`](app/prof) : chaque conclusion se **déplie** → décomposition de
+  confiance + canaux + liens vers chaque source brute.
+- **Pages source** [`app/source/[kind]/[id]`](app/source) : donnée brute (offre / trend / papier /
+  syllabus) + **provenance inverse** (« ⤴ Remonte vers N conclusions »).
+
+Le dataset riche est dans `data/` (72 offres, 16 technos, 20 publications, 5 cours avec
+`topics` + `notCovered`). Données chargées et validées par Zod dans [`lib/data.ts`](lib/data.ts).
+
+## Contrats des 5 agents (voie LLM optionnelle)
+
+`Scanner` → `TechWatch` → `CourseMapper` (parallèles) → `GapReporter` → `FactChecker`.
 Schémas Zod + types : `lib/schemas.ts`. I/O détaillés : `docs/PROJET.md` §4.
+Les agents (`lib/agents/*`) restent disponibles comme variante d'enrichissement « live » ; la
+démo s'appuie sur le moteur de provenance déterministe (chemin critique sans clé API).
 
 ## Design
 
